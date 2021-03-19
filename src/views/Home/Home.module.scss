@@ -1,0 +1,13 @@
+@import '../../styles/variable.scss';
+@import '../../styles/mixin.scss';
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  .content{
+    flex: 1
+  }
+  .tabBarContainer{
+    height: 50px;
+  }
+}

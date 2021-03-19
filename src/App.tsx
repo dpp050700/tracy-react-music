@@ -1,7 +1,11 @@
 import React from 'react';
+import { renderRoutes } from 'react-router-config';
+import { HashRouter } from 'react-router-dom';
+import routes from './routes/index';
+import './styles/reset.css';
 
 function App() {
-  return <div className="App">11</div>;
+  return <HashRouter>{renderRoutes(routes)}</HashRouter>;
 }
 
 export default App;
