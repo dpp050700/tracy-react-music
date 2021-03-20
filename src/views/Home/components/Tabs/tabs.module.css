@@ -1,0 +1,23 @@
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #d44439 ;
+  height: 40px;
+  color: #ffffff;
+}
+.tabsItem {
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  font-size:14px;
+  display: flex;
+  color: #ffffff;
+}
+.tabsItem span {
+  padding: 3px 0;
+}
+.tabsItem:global(.selected) span {
+  border-bottom: 2px solid #fff;
+}

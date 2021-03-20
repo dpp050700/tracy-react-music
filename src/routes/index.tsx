@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import Home from '../views/Home/Home';
 import Singer from '../views/Singer/Singer';
 import Recommend from '../views/Recommend/Recommend';
-import Hot from '../views/Hot/Hot';
+import Rank from '../views/Rank/Rank';
 
 export default [
   {
@@ -20,8 +20,8 @@ export default [
         component: Singer,
       },
       {
-        path: '/hot',
-        component: Hot,
+        path: '/rank',
+        component: Rank,
       },
       {
         path: '/recommend',

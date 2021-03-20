@@ -1,0 +1,28 @@
+.theme {
+  color: #d44439;
+}
+
+.background-default {
+  background-color: #ffffff;
+}
+.background-theme {
+  background-color: #d44439;
+}
+
+.text-0{
+  color: #ffffff;
+}
+
+[data-theme="dark"] .background-default {
+  background-color: #222;
+}
+
+.border-light {
+  color: #d44439;
+}
+
+.color-light {
+  color: #d44439;
+}
+
+:export { primaryColor: #d44439; }

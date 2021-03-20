@@ -1,0 +1,7 @@
+.root{
+  overflow:hidden;
+  position: relative;
+}
+.root :global(.swiper-pagination-bullet-active) {
+  background: red
+}

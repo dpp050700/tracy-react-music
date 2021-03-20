@@ -1,16 +1,18 @@
 import React from 'react';
 import { renderRoutes } from 'react-router-config';
+import Navbar from './components/Navbar/Navbar';
+import Tabs from './components/Tabs/Tabs';
 import style from './Home.module.scss';
 
-const { wrapper, content, tabBarContainer } = style;
+const { wrapper, content } = style;
 
 function Home(props: any) {
   const { route } = props;
   return (
     <div className={wrapper}>
-      Home111
+      <Navbar />
+      <Tabs />
       <div className={content}>{renderRoutes(route.routes)}</div>
-      <div className={tabBarContainer} />
     </div>
   );
 }
