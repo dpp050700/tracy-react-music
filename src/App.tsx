@@ -1,12 +1,18 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
 import { HashRouter } from 'react-router-dom';
 import routes from './routes/index';
+import store from './store/index';
 import './styles/reset.css';
 import './styles/iconfont.css';
 
 function App() {
-  return <HashRouter>{renderRoutes(routes)}</HashRouter>;
+  return (
+    <Provider store={store}>
+      <HashRouter>{renderRoutes(routes)}</HashRouter>
+    </Provider>
+  );
 }
 
 export default App;

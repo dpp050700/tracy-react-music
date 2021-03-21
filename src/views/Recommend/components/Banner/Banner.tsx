@@ -6,9 +6,9 @@ import style from './Banner.module.css';
 
 const { root } = style;
 
-interface IBannerItem {
+export interface IBannerItem {
   imageUrl: string;
-  id: string;
+  [propName: string]: any;
 }
 
 interface IBannerProps {
@@ -18,6 +18,7 @@ interface IBannerProps {
 const Banner: React.FC<IBannerProps> = (props: IBannerProps) => {
   const [sliderSwiper, setSliderSwiper] = useState<Swiper | null>(null);
   const { list } = props;
+  console.log(list);
 
   useEffect(() => {
     if (list.length && !sliderSwiper) {
@@ -41,7 +42,7 @@ const Banner: React.FC<IBannerProps> = (props: IBannerProps) => {
         <div className="swiper-wrapper">
           {list.map(item => {
             return (
-              <div className="swiper-slide" key={item.id}>
+              <div className="swiper-slide" key={item.imageUrl}>
                 <div className="slider-nav">
                   <img src={item.imageUrl} width="100%" height="100%" alt="" />
                 </div>
