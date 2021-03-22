@@ -5,3 +5,6 @@
 .root :global(.swiper-pagination-bullet-active) {
   background: red
 }
+.root :global(.swiper-slide) img {
+  display: block
+}

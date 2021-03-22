@@ -3,7 +3,7 @@ import style from './RecommendList.module.css';
 
 const { listWrap, recommendItem, recommendItemImage } = style;
 
-interface IRecommendItem {
+export interface IRecommendItem {
   name: string;
   id: number;
   picUrl: string;
