@@ -3,6 +3,7 @@
   flex-direction: column;
   height: 100%;
   .content{
-    flex: 1
+    flex: 1;
+    overflow: hidden;
   }
 }

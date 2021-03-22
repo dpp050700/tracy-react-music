@@ -18,7 +18,6 @@ interface IBannerProps {
 const Banner: React.FC<IBannerProps> = (props: IBannerProps) => {
   const [sliderSwiper, setSliderSwiper] = useState<Swiper | null>(null);
   const { list } = props;
-  console.log(list);
 
   useEffect(() => {
     if (list.length && !sliderSwiper) {
