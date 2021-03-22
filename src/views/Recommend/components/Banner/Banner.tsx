@@ -4,7 +4,7 @@ import 'swiper/dist/css/swiper.css';
 import Swiper from 'swiper';
 import style from './Banner.module.css';
 
-const { root } = style;
+const { bannerWrapper, sliderContainer, sliderBefore } = style;
 
 export interface IBannerItem {
   imageUrl: string;
@@ -33,11 +33,12 @@ const Banner: React.FC<IBannerProps> = (props: IBannerProps) => {
     }
   }, [list.length, sliderSwiper]);
 
-  const bannerWrapClass = classnames(root, 'slider-container');
+  const sliderContainerCls = classnames(sliderContainer, 'slider-container');
 
   return (
-    <div>
-      <div className={bannerWrapClass}>
+    <div className={bannerWrapper}>
+      <div className={sliderBefore} />
+      <div className={sliderContainerCls}>
         <div className="swiper-wrapper">
           {list.map(item => {
             return (
