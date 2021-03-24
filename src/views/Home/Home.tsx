@@ -12,7 +12,12 @@ function Home(props: any) {
   const [drawerStatus, setDrawerStatus] = useState(false);
   return (
     <div className={wrapper}>
-      <PersonDrawer show={drawerStatus} />
+      <PersonDrawer
+        show={drawerStatus}
+        onClose={() => {
+          setDrawerStatus(!drawerStatus);
+        }}
+      />
       <Navbar
         leftClick={() => {
           setDrawerStatus(!drawerStatus);
