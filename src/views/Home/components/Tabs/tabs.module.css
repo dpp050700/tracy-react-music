@@ -1,9 +1,8 @@
-
 .wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #d44439 ;
+  background: #d44439;
   height: 40px;
   color: #ffffff;
 }
@@ -11,7 +10,7 @@
   flex: 1;
   align-items: center;
   justify-content: center;
-  font-size:14px;
+  font-size: 14px;
   display: flex;
   color: #ffffff;
 }

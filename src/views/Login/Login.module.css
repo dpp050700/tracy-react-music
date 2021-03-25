@@ -1,9 +1,11 @@
-.root{}
-
-
-.loginForm{
-  padding: 0 20px
+.root {
 }
 
-.phoneInputWrapper {}
-.passwordInputWrapper {}
+.loginForm {
+  padding: 0 20px;
+}
+
+.phoneInputWrapper {
+}
+.passwordInputWrapper {
+}

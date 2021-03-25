@@ -1,4 +1,4 @@
-.listWrap{
+.listWrap {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -40,7 +40,7 @@
   -webkit-box-orient: vertical;
 }
 
-.recommendCount{
+.recommendCount {
   position: absolute;
   right: 0;
   top: 4px;
@@ -49,10 +49,10 @@
   display: flex;
   align-items: center;
 }
-.recommendCount i{
+.recommendCount i {
   font-size: 14px;
 }
-.recommendCount span{
+.recommendCount span {
   font-size: 12px;
   margin-left: 2px;
 }

@@ -1,25 +1,24 @@
-.bannerWrapper{
+.bannerWrapper {
   /* overflow:hidden; */
   position: relative;
 }
-.sliderBefore{
+.sliderBefore {
   position: absolute;
   top: -300px;
   height: 400px;
   width: 100%;
   background: #d44439;
   z-index: 1;
-
 }
-.sliderContainer{
+.sliderContainer {
   width: 98vw;
   margin: auto;
   overflow: hidden;
   position: relative;
 }
 .sliderContainer :global(.swiper-pagination-bullet-active) {
-  background: #d44439
+  background: #d44439;
 }
 .sliderContainer :global(.swiper-slide) img {
-  display: block
+  display: block;
 }
