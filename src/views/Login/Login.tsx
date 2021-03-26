@@ -1,10 +1,12 @@
 import React, { useRef, useState } from 'react';
+import { connect } from 'react-redux';
 import style from './Login.module.css';
-import { userLogin } from '../../request/index';
+import { userLogin, ILoginParams } from '../../store/actions';
 
 const { root, loginForm, phoneInputWrapper, passwordInputWrapper } = style;
 
-const Login: React.FC = () => {
+const Login: React.FC = (props: any) => {
+  const { login } = props;
   const phoneRef = useRef(null);
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
@@ -18,7 +20,10 @@ const Login: React.FC = () => {
     setPassword(val);
   };
   const handlerLogin = () => {
-    userLogin(phone, password);
+    login({
+      phone,
+      password,
+    });
   };
   return (
     <div className={root}>
@@ -43,4 +48,13 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login;
+const mapStateToProps = () => ({});
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    login(params: ILoginParams) {
+      dispatch(userLogin(params));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(React.memo(Login));

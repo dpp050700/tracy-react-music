@@ -1,10 +1,11 @@
 import axios from 'axios';
 
-export const baseUrl = 'http://47.98.159.95/m-api/';
+export const baseUrl = 'http://localhost:8880/';
 
 const axiosInstance = axios.create({
   baseURL: baseUrl,
 });
+axiosInstance.defaults.withCredentials = true;
 
 axiosInstance.interceptors.response.use(
   res => res.data,

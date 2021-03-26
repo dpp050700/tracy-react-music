@@ -21,6 +21,22 @@ export const getRecommendRequest = () => {
  * @param password
  * @returns
  */
-export const userLogin = (phone: string, password: string) => {
+export const httpUserLogin = (phone: string, password: string) => {
   return axiosInstance.get(`/login/cellphone?phone=${phone}&password=${password}`);
+};
+
+/**
+ * 退出登陆
+ * @returns
+ */
+export const httpUserLogout = () => {
+  return axiosInstance.get('/logout');
+};
+
+/**
+ * 获取登陆状态
+ * @returns
+ */
+export const httpLoginStatu = () => {
+  return axiosInstance.get('/login/status');
 };

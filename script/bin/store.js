@@ -110,14 +110,16 @@ Files.forEach(file => {
 /**
  * 引入 store 模块
  */
-const rootStorePath = path.resolve(__dirname, '../../src/store/index.ts');
+const rootStorePath = path.resolve(__dirname, '../../src/store/reducer.ts');
 
 let storeImportText = `import { combineReducers } from 'redux-immutable';`;
 
 storeList.forEach(item => {
   storeImportText += `import { reducer as ${item.toLowerCase()} } from '../views/${item}/store/index';`;
 });
-storeImportText += `export default combineReducers({
+storeImportText += `
+
+export default combineReducers({
   ${storeList.map(item => item.toLowerCase()).join(',')}
 });`;
 

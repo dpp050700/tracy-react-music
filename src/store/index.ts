@@ -1,7 +1,9 @@
-import { combineReducers } from 'redux-immutable';
-import { reducer as recommend } from '../views/Recommend/store/index';
-import { reducer as login } from '../views/Login/store/index';
-export default combineReducers({
-  recommend,
-  login,
-});
+import { createStore, compose, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import reducer from './reducer';
+
+const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
+
+export default store;
