@@ -16,6 +16,7 @@ const defaultState = fromJS({
     backgroundUrl: null,
   },
   isLogin: false,
+  agreementChecked: false,
 });
 
 const user = (state = defaultState, action: IAction) => {
@@ -24,6 +25,8 @@ const user = (state = defaultState, action: IAction) => {
       return state.set('userInfo', action.data);
     case actionTypes.CHANGE_USER_LOGIN_STATU:
       return state.set('isLogin', action.data);
+    case actionTypes.CHANGE_USER_AGREEMENT_CHECKED:
+      return state.set('agreementChecked', action.data);
     default:
       return state;
   }

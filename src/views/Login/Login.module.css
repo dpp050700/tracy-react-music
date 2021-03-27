@@ -1,11 +1,67 @@
 .root {
+  height: 100%;
+  overflow: hidden;
+}
+
+.appLogo{
+  display: block;
+  margin:30px auto 30px auto;
+  width: 150px;
+  height: 150px;
 }
 
 .loginForm {
-  padding: 0 20px;
+  margin: auto;
+}
+
+.loginFormInput {
+  width:350px;
+  height:50px;
+  border: 1px solid #F0F0F0;
+  margin:auto;
+  padding: 14px 20px;
+  margin-bottom: 20px;
+}
+
+.loginFormInput input{
+  border:none;
+  line-height:20px;
+  font-size:14px;
+  outline:none;
+  background: none;
+  width: 100%;
+}
+
+.loginButton {
+  width:350px;
+  height:48px;
+  background: linear-gradient(90deg, #F0242E 0%, #D0111A 100%);
+  border-radius: 2px;
+  line-height: 48px;
+  color: #fff;
+  text-align: center;
+  border: none;
+  outline: none;
+  margin: auto;
+  display: block;
 }
 
 .phoneInputWrapper {
+ 
 }
+
 .passwordInputWrapper {
+}
+
+.argumentWrapper{
+  display: flex;
+  align-items:center;
+  justify-content:center;
+  margin-top: 20px;
+}
+
+.argumentCheckbox{}
+.argumentText{
+  font-size:12px;
+  margin-left: 6px;
 }

@@ -22,7 +22,7 @@ export const getRecommendRequest = () => {
  * @returns
  */
 export const httpUserLogin = (phone: string, password: string) => {
-  return axiosInstance.get(`/login/cellphone?phone=${phone}&password=${password}`);
+  return axiosInstance.get(`/login/cellphone?phone=${phone}&md5_password=${password}`);
 };
 
 /**
@@ -38,5 +38,13 @@ export const httpUserLogout = () => {
  * @returns
  */
 export const httpLoginStatu = () => {
-  return axiosInstance.get('/login/status');
+  return axiosInstance.get(`/login/status?timestamp=${new Date().getTime()}`);
+};
+
+/**
+ * 获取用户详情
+ * @returns
+ */
+export const httpUserDetail = (uid: number) => {
+  return axiosInstance.get(`/user/detail?uid=${uid}`);
 };
