@@ -1,0 +1,22 @@
+.root{
+  min-height: 42px;
+  max-height: 42px;
+  display: flex;
+  align-items: center;
+  background: #fff;
+}
+
+.userAvatar {
+  width:32px;
+  height: 32px;
+  display: block;
+  border-radius: 50%;
+  margin-right: 12px;
+  margin-left: 10px;
+}
+
+.userName {
+  font-size: 14px;
+  display: flex;
+  color: #1F2126;
+}

@@ -51,5 +51,6 @@ module.exports = {
     'react/button-has-type': 0,
     'react/jsx-props-no-spreading': 0,
     'no-console': 0,
+    'react/no-array-index-key': 0,
   },
 };

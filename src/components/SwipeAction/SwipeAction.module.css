@@ -1,0 +1,37 @@
+.root{
+  border-radius: 10px;
+  background-color: #fff;
+  margin: 20px 10px;
+  /* padding :10px 0; */
+}
+
+.swipeWrapper {
+  padding: 0 12px;
+}
+
+.swipeName {
+  border-bottom: 1px solid #ccc;
+  padding-left: 12px;
+  line-height: 36px;
+}
+
+.swipeItem{
+  height: 44px;
+  line-height: 44px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+}
+.swipeItem:last-child{
+  border-bottom: none;
+}
+
+.swipeLabel {
+  margin-left: 8px;
+
+}
+.swipeContent{
+  flex: 1
+}
+.swipeArrow {
+  color: #828999
+}

@@ -5,7 +5,7 @@ import { HashRouter } from 'react-router-dom';
 import routes from './routes/index';
 import store from './store/index';
 import './styles/reset.css';
-import './styles/iconfont.css';
+import './styles/fonts/iconfont.css';
 
 function App() {
   return (
