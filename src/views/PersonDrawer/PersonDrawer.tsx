@@ -6,6 +6,9 @@ import * as actions from '../../store/actions';
 import DrawerHead from './components/DrawerHead/DrawerHead';
 import SwipeAction from '../../components/SwipeAction/SwipeAction';
 import swipeActionList from './swipeActionList';
+import MessageNumber from './components/MessageNumber/MessageNumber';
+
+swipeActionList[0].list[0].content = <MessageNumber />;
 
 const { root, overlay, content, listWrap, logoutBtn } = style;
 interface IPersonDrawer {
@@ -34,7 +37,6 @@ const PersonDrawer: React.FC<IPersonDrawer> = (props: IPersonDrawer) => {
         <DrawerHead />
         <div className={listWrap}>
           {swipeActionList.map((item, index) => {
-            // eslint-disable-next-line
             return <SwipeAction list={item.list} name={item.name} key={index} />;
           })}
 

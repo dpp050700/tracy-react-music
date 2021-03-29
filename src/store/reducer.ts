@@ -17,6 +17,7 @@ const defaultState = fromJS({
   },
   isLogin: false,
   agreementChecked: false,
+  messageNumber: 8,
 });
 
 const user = (state = defaultState, action: IAction) => {

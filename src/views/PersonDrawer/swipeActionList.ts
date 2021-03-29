@@ -1,9 +1,5 @@
 import { ISwipeAction } from '../../components/SwipeAction/SwipeAction';
 
-// interface swipeActionCard {
-//   name: '';
-// }
-
 const swipeActionList: ISwipeAction[] = [
   {
     name: '',
@@ -68,7 +64,7 @@ const swipeActionList: ISwipeAction[] = [
       },
       {
         label: '优惠券',
-        icon: 'icon-youhuiquan',
+        icon: 'youhuiquan',
       },
       {
         label: '我的客服',
