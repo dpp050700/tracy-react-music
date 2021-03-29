@@ -6,6 +6,7 @@ import Singer from '../views/Singer/Singer';
 import Recommend from '../views/Recommend/Recommend';
 import Rank from '../views/Rank/Rank';
 import Login from '../views/Login/Login';
+import Search from '../views/Search/Search';
 
 export default [
   {
@@ -31,6 +32,10 @@ export default [
           {
             path: '/recommend',
             component: Recommend,
+          },
+          {
+            path: '/search',
+            component: Search,
           },
           {
             path: '/',

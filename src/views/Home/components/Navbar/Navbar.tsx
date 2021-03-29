@@ -1,7 +1,7 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import classnames from 'classnames';
+import { RouteComponentProps } from 'react-router-dom';
+import { withRouter } from 'react-router';
 import style from './navbar.module.css';
 
 const { wrapper, menuIcon, searchIcon } = style;
@@ -9,7 +9,7 @@ const { wrapper, menuIcon, searchIcon } = style;
 const menuIconClass = classnames(menuIcon, 'iconfont icon-gengduo');
 const searchIconClass = classnames(searchIcon, 'iconfont icon-sousuo');
 
-interface INavBar {
+interface INavBar extends RouteComponentProps<any> {
   leftClick: () => void;
 }
 
@@ -17,11 +17,25 @@ const Navbar: React.FC<INavBar> = (props: INavBar) => {
   const { leftClick } = props;
   return (
     <div className={wrapper}>
-      <i className={menuIconClass} onClick={leftClick} />
+      <i
+        className={menuIconClass}
+        role="button"
+        tabIndex={0}
+        aria-label="more"
+        onClick={leftClick}
+        onKeyDown={leftClick}
+      />
       <div>app</div>
-      <i className={searchIconClass} />
+      <i
+        role="button"
+        className={searchIconClass}
+        tabIndex={0}
+        aria-label="search"
+        onKeyDown={() => props.history.push('/search')}
+        onClick={() => props.history.push('/search')}
+      />
     </div>
   );
 };
 
-export default Navbar;
+export default withRouter(Navbar);
