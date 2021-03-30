@@ -1,4 +1,4 @@
-.root{
+.root {
   border-radius: 10px;
   background-color: #fff;
   margin: 20px 10px;
@@ -12,29 +12,28 @@
 .swipeName {
   padding-left: 12px;
   line-height: 36px;
-  color:#828999;
-  font-size:13px;
+  color: #828999;
+  font-size: 13px;
 }
 
-.swipeItem{
+.swipeItem {
   height: 44px;
   line-height: 44px;
   display: flex;
 }
-.swipeItem:last-child::after{
+.swipeItem:last-child::after {
   display: none;
 }
 
 .swipeLabel {
   margin-left: 8px;
-  font-size:12px;
-
+  font-size: 12px;
 }
-.swipeContent{
+.swipeContent {
   flex: 1;
   text-align: right;
   padding-right: 8px;
 }
 .swipeArrow {
-  color: #828999
+  color: #828999;
 }

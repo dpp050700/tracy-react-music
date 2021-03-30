@@ -1,0 +1,48 @@
+.root {
+  height: 48px;
+  padding: 10px 20px;
+  background: #d44439;
+  display: flex;
+  align-items: center;
+}
+
+.searchInputWrap {
+  flex: 1;
+  height: 100%;
+  position: relative;
+}
+.searchInputWrap .searchIcon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 28px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.searchInputWrap input {
+  width: 100%;
+  background: #fff;
+  outline: none;
+  border: none;
+  height: 100%;
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding: 0 28px;
+}
+
+.searchInputWrap .searchClear {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 28px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.searchCancel {
+  margin-left: 20px;
+  color: #fff;
+}

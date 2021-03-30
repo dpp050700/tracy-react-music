@@ -1,13 +1,12 @@
-
 /* #828999 #1F2126 #d44439 */
 
 .border-bottom {
   position: relative;
 }
-.border-bottom::after{
+.border-bottom::after {
   display: block;
   position: absolute;
-  content: "";
+  content: '';
   left: 0;
   width: 100%;
   bottom: 0;

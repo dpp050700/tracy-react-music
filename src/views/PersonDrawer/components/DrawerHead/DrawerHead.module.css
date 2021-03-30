@@ -1,4 +1,4 @@
-.root{
+.root {
   min-height: 42px;
   max-height: 42px;
   display: flex;
@@ -7,7 +7,7 @@
 }
 
 .userAvatar {
-  width:32px;
+  width: 32px;
   height: 32px;
   display: block;
   border-radius: 50%;
@@ -18,5 +18,5 @@
 .userName {
   font-size: 14px;
   display: flex;
-  color: #1F2126;
+  color: #1f2126;
 }

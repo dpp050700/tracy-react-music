@@ -1,6 +1,16 @@
+// import { combineReducers } from 'redux-immutable';
+// import { reducer as recommend } from '../views/Recommend/store/index';
+// import { reducer as search } from '../views/Search/store/index';
+
+// export default combineReducers({
+//   recommend,
+//   search,
+// });
+
 import { combineReducers } from 'redux-immutable';
 import { fromJS } from 'immutable';
 import { reducer as recommend } from '../views/Recommend/store/index';
+import { reducer as search } from '../views/Search/store/index';
 
 import * as actionTypes from './constants';
 
@@ -36,4 +46,5 @@ const user = (state = defaultState, action: IAction) => {
 export default combineReducers({
   recommend,
   user,
+  search,
 });

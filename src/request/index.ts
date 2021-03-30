@@ -48,3 +48,11 @@ export const httpLoginStatu = () => {
 export const httpUserDetail = (uid: number) => {
   return axiosInstance.get(`/user/detail?uid=${uid}`);
 };
+
+/**
+ * 获取热搜列表
+ */
+
+export const httpHotSearch = () => {
+  return axiosInstance.get('/search/hot/detail');
+};

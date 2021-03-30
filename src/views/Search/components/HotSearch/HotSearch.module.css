@@ -1,0 +1,23 @@
+.root {
+}
+
+.title {
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  color: #999999;
+  margin-bottom: 20px;
+}
+
+.searchList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.searchItem {
+  padding: 10px 15px;
+  background-color: #f8f8f8;
+  color: #333;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}

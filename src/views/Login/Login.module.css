@@ -3,9 +3,9 @@
   overflow: hidden;
 }
 
-.appLogo{
+.appLogo {
   display: block;
-  margin:30px auto 30px auto;
+  margin: 30px auto 30px auto;
   width: 150px;
   height: 150px;
 }
@@ -15,27 +15,27 @@
 }
 
 .loginFormInput {
-  width:350px;
-  height:50px;
-  border: 1px solid #F0F0F0;
-  margin:auto;
+  width: 350px;
+  height: 50px;
+  border: 1px solid #f0f0f0;
+  margin: auto;
   padding: 14px 20px;
   margin-bottom: 20px;
 }
 
-.loginFormInput input{
-  border:none;
-  line-height:20px;
-  font-size:14px;
-  outline:none;
+.loginFormInput input {
+  border: none;
+  line-height: 20px;
+  font-size: 14px;
+  outline: none;
   background: none;
   width: 100%;
 }
 
 .loginButton {
-  width:350px;
-  height:48px;
-  background: linear-gradient(90deg, #F0242E 0%, #D0111A 100%);
+  width: 350px;
+  height: 48px;
+  background: linear-gradient(90deg, #f0242e 0%, #d0111a 100%);
   border-radius: 2px;
   line-height: 48px;
   color: #fff;
@@ -47,21 +47,21 @@
 }
 
 .phoneInputWrapper {
- 
 }
 
 .passwordInputWrapper {
 }
 
-.argumentWrapper{
+.argumentWrapper {
   display: flex;
-  align-items:center;
-  justify-content:center;
+  align-items: center;
+  justify-content: center;
   margin-top: 20px;
 }
 
-.argumentCheckbox{}
-.argumentText{
-  font-size:12px;
+.argumentCheckbox {
+}
+.argumentText {
+  font-size: 12px;
   margin-left: 6px;
 }
