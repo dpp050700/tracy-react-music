@@ -52,7 +52,13 @@ export const httpUserDetail = (uid: number) => {
 /**
  * 获取热搜列表
  */
-
 export const httpHotSearch = () => {
   return axiosInstance.get('/search/hot/detail');
+};
+
+/**
+ *
+ */
+export const httpSearchSuggest = (keywords: string) => {
+  return axiosInstance.get(`/search/suggest?keywords=${keywords}&type=mobile`);
 };

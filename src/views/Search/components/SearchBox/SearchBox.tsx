@@ -1,18 +1,33 @@
-import React from 'react';
+import React, { useRef, useEffect, useMemo } from 'react';
 import { connect } from 'react-redux';
 import styled from './SearchBox.module.css';
 import * as actions from '../../store/actions';
+import { debounce } from '../../../../utils/utils';
 
 const { root, searchInputWrap, searchCancel, searchIcon, searchClear } = styled;
 
 interface ISearchBox {
   keywords: string;
   inputChange: (keywords: string) => void;
-  getSearchValue: (keywords: string) => void;
+  getSuggestList: (keywords: string) => void;
 }
 
 const SearchBox: React.FC<ISearchBox> = (props: ISearchBox) => {
-  const { keywords, inputChange, getSearchValue } = props;
+  const { keywords, inputChange, getSuggestList } = props;
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  const handleQueryDebounce = useMemo(() => {
+    return debounce(getSuggestList, 500);
+  }, [getSuggestList]);
+
+  useEffect(() => {
+    if (inputRef && inputRef.current) {
+      inputRef.current.focus();
+    }
+  });
+  useEffect(() => {
+    handleQueryDebounce(keywords);
+  }, [keywords]);
   return (
     <div className={root}>
       <div className={searchInputWrap}>
@@ -22,16 +37,21 @@ const SearchBox: React.FC<ISearchBox> = (props: ISearchBox) => {
         <input
           type="text"
           value={keywords}
+          ref={inputRef}
           onChange={e => {
             inputChange(e.currentTarget.value);
           }}
-          onBlur={e => {
-            getSearchValue(e.currentTarget.value);
-          }}
         />
-        <div className={searchClear}>
-          <i className="iconfont icon-shibai" />
-        </div>
+        {keywords ? (
+          <div
+            className={searchClear}
+            onClick={() => {
+              inputChange('');
+            }}
+          >
+            <i className="iconfont icon-shibai" />
+          </div>
+        ) : null}
       </div>
       <span className={searchCancel}>取消</span>
     </div>
@@ -47,8 +67,8 @@ const mapDispatchToProps = (dispatch: any) => {
     inputChange(keywords: string) {
       dispatch(actions.changeSearchKeywords(keywords));
     },
-    getSearchValue(keywords: string) {
-      dispatch(actions.getSearchValue(keywords));
+    getSuggestList(keywords: string) {
+      dispatch(actions.getSuggestList(keywords));
     },
   };
 };

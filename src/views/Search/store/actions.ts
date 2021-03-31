@@ -1,7 +1,7 @@
 import { fromJS } from 'immutable';
 import * as actionTypes from './constants';
 import { ISearchItem } from '../components/SerachList/SerachList';
-import { httpHotSearch } from '../../../request/index';
+import { httpHotSearch, httpSearchSuggest } from '../../../request/index';
 
 const STORAGE_HISTORY_KEY = '__tracy_music_react_history_search__';
 
@@ -18,6 +18,10 @@ export const changeHistoryList = (data: ISearchItem[]) => {
 };
 export const changeSearchKeywords = (data: string) => ({
   type: actionTypes.CHANGE_SEARCH_KEYWORDS,
+  data: fromJS(data),
+});
+export const changeSuggestList = (data: any[]) => ({
+  type: actionTypes.CHANGE_SUGGEST_LIST,
   data: fromJS(data),
 });
 export const getHotList = () => {
@@ -61,5 +65,22 @@ export const getSearchValue = (keywords: string) => {
 
     const action = changeHistoryList(arr);
     dispatch(action);
+  };
+};
+
+export const getSuggestList = (keywords: string) => {
+  if (!keywords) {
+    return (dispatch: any) => {
+      const action = changeSuggestList([]);
+      dispatch(action);
+    };
+  }
+  return (dispatch: any) => {
+    httpSearchSuggest(keywords).then((res: any) => {
+      const { result } = res;
+      const list = result.allMatch;
+      const action = changeSuggestList(list);
+      dispatch(action);
+    });
   };
 };
