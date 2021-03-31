@@ -9,6 +9,7 @@ interface IAction {
 const defaultState = fromJS({
   hotList: [],
   historyList: [],
+  keywords: '',
 });
 
 export default (state = defaultState, action: IAction) => {
@@ -17,6 +18,8 @@ export default (state = defaultState, action: IAction) => {
       return state.set('hotList', action.data);
     case actionTypes.CHANGE_HISTORY_LIST:
       return state.set('historyList', action.data);
+    case actionTypes.CHANGE_SEARCH_KEYWORDS:
+      return state.set('keywords', action.data);
     default:
       return state;
   }
