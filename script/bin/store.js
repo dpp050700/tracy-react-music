@@ -112,7 +112,8 @@ Files.forEach(file => {
  */
 const rootStorePath = path.resolve(__dirname, '../../src/store/reducer.ts');
 
-let storeImportText = `import { combineReducers } from 'redux-immutable';`;
+let storeImportText = `import { combineReducers } from 'redux-immutable';
+import user from './user';`;
 
 storeList.forEach(item => {
   storeImportText += `import { reducer as ${item.toLowerCase()} } from '../views/${item}/store/index';`;
@@ -120,7 +121,7 @@ storeList.forEach(item => {
 storeImportText += `
 
 export default combineReducers({
-  ${storeList.map(item => item.toLowerCase()).join(',')}
+  ${`${storeList.map(item => item.toLowerCase()).join(',')},user`}
 });`;
 
 fileSave(rootStorePath).write(storeImportText, 'utf8').end('\n');
