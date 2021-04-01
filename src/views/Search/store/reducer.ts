@@ -24,6 +24,8 @@ export default (state = defaultState, action: IAction) => {
       return state.set('keywords', action.data);
     case actionTypes.CHANGE_SUGGEST_LIST:
       return state.set('suggestList', action.data);
+    case actionTypes.CHANGE_SHOW_SUGGEST:
+      return state.set('showSuggest', action.data);
     default:
       return state;
   }

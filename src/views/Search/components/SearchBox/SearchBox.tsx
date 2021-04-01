@@ -8,13 +8,15 @@ const { root, searchInputWrap, searchCancel, searchIcon, searchClear } = styled;
 
 interface ISearchBox {
   keywords: string;
+  showSuggest: boolean;
   inputChange: (keywords: string) => void;
   getSuggestList: (keywords: string) => void;
+  changeShowSuggest: (isShow: boolean) => void;
 }
 
 const SearchBox: React.FC<ISearchBox> = (props: ISearchBox) => {
-  const { keywords, inputChange, getSuggestList } = props;
-  const inputRef = useRef<HTMLInputElement | null>(null);
+  const { keywords, showSuggest, inputChange, getSuggestList, changeShowSuggest } = props;
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleQueryDebounce = useMemo(() => {
     return debounce(getSuggestList, 500);
@@ -24,10 +26,20 @@ const SearchBox: React.FC<ISearchBox> = (props: ISearchBox) => {
     if (inputRef && inputRef.current) {
       inputRef.current.focus();
     }
-  });
+  }, []);
   useEffect(() => {
-    handleQueryDebounce(keywords);
-  }, [keywords]);
+    if (keywords && showSuggest) {
+      handleQueryDebounce(keywords);
+    }
+  }, [keywords, showSuggest]);
+
+  const handlerClearClick = () => {
+    inputChange('');
+    if (inputRef && inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+
   return (
     <div className={root}>
       <div className={searchInputWrap}>
@@ -41,14 +53,12 @@ const SearchBox: React.FC<ISearchBox> = (props: ISearchBox) => {
           onChange={e => {
             inputChange(e.currentTarget.value);
           }}
+          onFocus={() => {
+            changeShowSuggest(true);
+          }}
         />
         {keywords ? (
-          <div
-            className={searchClear}
-            onClick={() => {
-              inputChange('');
-            }}
-          >
+          <div className={searchClear} onClick={handlerClearClick}>
             <i className="iconfont icon-shibai" />
           </div>
         ) : null}
@@ -60,6 +70,7 @@ const SearchBox: React.FC<ISearchBox> = (props: ISearchBox) => {
 
 const mapStateToProps = (state: any) => ({
   keywords: state.getIn(['search', 'keywords']),
+  showSuggest: state.getIn(['search', 'showSuggest']),
 });
 
 const mapDispatchToProps = (dispatch: any) => {
@@ -69,6 +80,9 @@ const mapDispatchToProps = (dispatch: any) => {
     },
     getSuggestList(keywords: string) {
       dispatch(actions.getSuggestList(keywords));
+    },
+    changeShowSuggest(isShow: boolean) {
+      dispatch(actions.changeShowSuggest(isShow));
     },
   };
 };

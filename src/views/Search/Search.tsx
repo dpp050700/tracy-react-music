@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from './Search.module.css';
@@ -21,6 +22,8 @@ const Search: React.FC<ISuggestList> = (props: ISuggestList) => {
       <div className={content}>
         {showSuggest && keywords ? (
           <SuggestList />
+        ) : keywords ? (
+          <div>搜索结果</div>
         ) : (
           <div className={searchTagContent}>
             <HistorySearch />

@@ -57,8 +57,15 @@ export const httpHotSearch = () => {
 };
 
 /**
- *
+ * 获取搜索建议
  */
 export const httpSearchSuggest = (keywords: string) => {
   return axiosInstance.get(`/search/suggest?keywords=${keywords}&type=mobile`);
+};
+
+/**
+ * 搜素
+ */
+export const httpSearchResult = (keywords: string) => {
+  return axiosInstance.get(`/cloudsearch?keywords=${keywords}`);
 };
