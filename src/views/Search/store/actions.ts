@@ -87,14 +87,13 @@ export const getSearchValue = (keywords: string) => {
     const action = changeHistoryList(arr);
     dispatch(action);
     dispatch(changeShowSuggest(false));
+    dispatch(changeSearchList([]));
     httpSearchResult(keywords).then((res: any) => {
-      console.log(res);
-      const list = getState().getIn(['search', 'result']).toJS();
+      const list = res.result.songs || [];
       const offset = getState().getIn(['search', 'offset']);
-      dispatch(changeSearchList([...list, ...res.result.songs]));
+      dispatch(changeSearchList(list));
       dispatch(changeSearchTotal(res.result.songCount));
-      dispatch(changeSearchOffset(offset + res.result.songs.length));
-      // console.log(res.songCounts);
+      dispatch(changeSearchOffset(offset + list.length + 1));
     });
   };
 };

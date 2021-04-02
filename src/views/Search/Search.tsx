@@ -6,6 +6,8 @@ import SearchBox from './components/SearchBox/SearchBox';
 import HistorySearch from './components/HistorySearch/HistorySearch';
 import HotSearch from './components/HotSearch/HotSearch';
 import SuggestList from './components/SuggestList/SuggestList';
+import Scroll from '../../components/Scroll/Scroll';
+import SearchResult from './components/SearchResult/SearchResult';
 
 const { root, content, searchTagContent } = styled;
 
@@ -23,12 +25,14 @@ const Search: React.FC<ISuggestList> = (props: ISuggestList) => {
         {showSuggest && keywords ? (
           <SuggestList />
         ) : keywords ? (
-          <div>搜索结果</div>
+          <SearchResult />
         ) : (
-          <div className={searchTagContent}>
-            <HistorySearch />
-            <HotSearch />
-          </div>
+          <Scroll>
+            <div className={searchTagContent}>
+              <HistorySearch />
+              <HotSearch />
+            </div>
+          </Scroll>
         )}
       </div>
     </div>

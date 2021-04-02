@@ -1,0 +1,32 @@
+.root{}
+.header{
+  padding: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.header i{
+  margin-right: 6px;
+  font-weight: normal;
+}
+.resultItem {
+  display: flex;
+  padding: 10px 12px
+}
+.left{
+  flex: 1
+}
+.left .songName{
+  font-size: 14px
+}
+
+.left .songInfo{
+  font-size: 12px;
+  margin-top: 8px;
+}
+.resultItem .right{
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  line-height: 24px;
+  font-size: 20px;
+}
