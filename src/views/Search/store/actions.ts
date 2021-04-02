@@ -30,6 +30,21 @@ export const changeShowSuggest = (data: boolean) => ({
   data: fromJS(data),
 });
 
+export const changeSearchList = (data: any[]) => ({
+  type: actionTypes.CHANGE_SEARCH_RESULT,
+  data: fromJS(data),
+});
+
+export const changeSearchTotal = (data: number) => ({
+  type: actionTypes.CHANGE_SEARCH_TOTAL,
+  data: fromJS(data),
+});
+
+export const changeSearchOffset = (data: number) => ({
+  type: actionTypes.CHANGE_SEARCH_OFFSET,
+  data: fromJS(data),
+});
+
 export const getHotList = () => {
   return (dispatch: any) => {
     httpHotSearch().then((res: any) => {
@@ -56,13 +71,13 @@ export const getHistoryList = () => {
 };
 
 export const getSearchValue = (keywords: string) => {
-  return (dispatch: any, state: any) => {
+  return (dispatch: any, getState: any) => {
     if (!keywords) {
       alert('请输入搜索关键词');
       return;
     }
     dispatch(changeSearchKeywords(keywords));
-    const arr: ISearchItem[] = state().toJS().search.historyList;
+    const arr: ISearchItem[] = getState().toJS().search.historyList;
     const index = arr.findIndex(item => item.label === keywords);
     if (index > -1) {
       arr.splice(index, 1);
@@ -74,6 +89,12 @@ export const getSearchValue = (keywords: string) => {
     dispatch(changeShowSuggest(false));
     httpSearchResult(keywords).then((res: any) => {
       console.log(res);
+      const list = getState().getIn(['search', 'result']).toJS();
+      const offset = getState().getIn(['search', 'offset']);
+      dispatch(changeSearchList([...list, ...res.result.songs]));
+      dispatch(changeSearchTotal(res.result.songCount));
+      dispatch(changeSearchOffset(offset + res.result.songs.length));
+      // console.log(res.songCounts);
     });
   };
 };

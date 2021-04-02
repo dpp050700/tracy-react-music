@@ -1,9 +1,9 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import BScroll from 'better-scroll';
 import * as actionTypes from './store/actions';
 import Banner, { IBannerItem } from './components/Banner/Banner';
 import RecommendList, { IRecommendItem } from './components/RecommendList/RecommendList';
+import Scroll from '../../components/Scroll/Scroll';
 
 interface IRecommend {
   bannerList: IBannerItem[];
@@ -14,8 +14,6 @@ interface IRecommend {
 
 const Recommend: React.FC<IRecommend> = (props: IRecommend) => {
   const { bannerList, recommendList, getBannerDataDispatch, getRecommendListDispatch } = props;
-  const [bScroll, setBScroll] = useState<any>(null);
-  const scrollContaninerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (!bannerList.length) {
@@ -26,37 +24,13 @@ const Recommend: React.FC<IRecommend> = (props: IRecommend) => {
     }
   }, []);
 
-  useEffect(() => {
-    if (scrollContaninerRef && scrollContaninerRef.current) {
-      console.log(scrollContaninerRef.current);
-      const scroll = new BScroll(scrollContaninerRef.current, {
-        probeType: 3,
-        click: true,
-      });
-      setBScroll(scroll);
-      return () => {
-        setBScroll(null);
-      };
-    }
-    return undefined;
-  }, []);
-  useEffect(() => {
-    if (bScroll) {
-      bScroll.refresh();
-    }
-  });
-
   return (
-    <div
-      style={{ overflow: 'hidden', height: '100%' }}
-      className="wrapper"
-      ref={scrollContaninerRef}
-    >
+    <Scroll>
       <div>
         <Banner list={bannerList} />
         <RecommendList list={recommendList} />
       </div>
-    </div>
+    </Scroll>
   );
 };
 

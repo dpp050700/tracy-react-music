@@ -12,6 +12,9 @@ const defaultState = fromJS({
   keywords: '',
   suggestList: [], // 搜索推荐
   showSuggest: true,
+  result: [], // 搜索结果
+  offset: 0, // 偏移数量
+  total: 0,
 });
 
 export default (state = defaultState, action: IAction) => {
@@ -26,6 +29,12 @@ export default (state = defaultState, action: IAction) => {
       return state.set('suggestList', action.data);
     case actionTypes.CHANGE_SHOW_SUGGEST:
       return state.set('showSuggest', action.data);
+    case actionTypes.CHANGE_SEARCH_RESULT:
+      return state.set('result', action.data);
+    case actionTypes.CHANGE_SEARCH_TOTAL:
+      return state.set('total', action.data);
+    case actionTypes.CHANGE_SEARCH_OFFSET:
+      return state.set('offset', action.data);
     default:
       return state;
   }
