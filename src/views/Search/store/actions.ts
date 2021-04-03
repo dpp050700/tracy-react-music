@@ -70,6 +70,25 @@ export const getHistoryList = () => {
   };
 };
 
+export const loadMoreSearchResult = () => {
+  return (dispatch: any, getState: any) => {
+    const keywords = getState().getIn(['search', 'keywords']);
+    const offset = getState().getIn(['search', 'offset']);
+    const total = getState().getIn(['search', 'total']);
+    const lastList = getState().getIn(['search', 'result']).toJS();
+    if (offset !== 0 && offset >= total) {
+      alert('已经是最后一页啦');
+      return;
+    }
+    httpSearchResult(keywords, offset).then((res: any) => {
+      const list = res.result.songs || [];
+      dispatch(changeSearchList([...lastList, ...list]));
+      dispatch(changeSearchTotal(res.result.songCount));
+      dispatch(changeSearchOffset(list.length + lastList.length));
+    });
+  };
+};
+
 export const getSearchValue = (keywords: string) => {
   return (dispatch: any, getState: any) => {
     if (!keywords) {
@@ -88,13 +107,8 @@ export const getSearchValue = (keywords: string) => {
     dispatch(action);
     dispatch(changeShowSuggest(false));
     dispatch(changeSearchList([]));
-    httpSearchResult(keywords).then((res: any) => {
-      const list = res.result.songs || [];
-      const offset = getState().getIn(['search', 'offset']);
-      dispatch(changeSearchList(list));
-      dispatch(changeSearchTotal(res.result.songCount));
-      dispatch(changeSearchOffset(offset + list.length + 1));
-    });
+    dispatch(changeSearchOffset(0));
+    dispatch(loadMoreSearchResult());
   };
 };
 
@@ -108,8 +122,8 @@ export const getSuggestList = (keywords: string) => {
   return (dispatch: any) => {
     httpSearchSuggest(keywords).then((res: any) => {
       const { result } = res;
-      const list = result.allMatch;
-      const action = changeSuggestList(list);
+      const list = result.allMatch || [];
+      const action = changeSuggestList([{ keyword: keywords }, ...list]);
       dispatch(action);
     });
   };

@@ -1,6 +1,14 @@
-import React, { forwardRef, useState, useRef, useEffect, useImperativeHandle } from 'react';
+import React, {
+  forwardRef,
+  useState,
+  useRef,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+} from 'react';
 import BScroll from 'better-scroll';
 import styled from './Scroll.module.css';
+import { debounce } from '../../utils/utils';
 
 type directionType = 'horizental' | 'vertical';
 
@@ -9,12 +17,22 @@ interface IScroll {
   direction?: directionType;
   onScroll?: () => void;
   refresh?: boolean;
+  pullUp?: () => void;
+  pullDown?: () => void;
 }
 
 const Scroll: React.ForwardRefExoticComponent<IScroll> = forwardRef((props: IScroll, ref) => {
-  const { direction, refresh, onScroll } = props;
+  const { direction, refresh, onScroll, pullUp, pullDown } = props;
   const [bScroll, setBScroll] = useState<any>(null);
   const scrollContentRef = useRef<HTMLDivElement | null>(null);
+
+  const pullUpDebounce = useMemo(() => {
+    return debounce(pullUp, 500);
+  }, [pullUp]);
+
+  const pullDownDebounce = useMemo(() => {
+    return debounce(pullDown, 500);
+  }, [pullDown]);
 
   useEffect(() => {
     if (scrollContentRef && scrollContentRef.current) {
@@ -39,6 +57,34 @@ const Scroll: React.ForwardRefExoticComponent<IScroll> = forwardRef((props: IScr
       bScroll.off('scroll', onScroll);
     };
   }, [onScroll, bScroll]);
+
+  useEffect(() => {
+    if (!bScroll || !pullUp) return undefined;
+    const handlePullUp = () => {
+      if (bScroll.y <= bScroll.maxScrollY + 100) {
+        console.log(12);
+        pullUpDebounce();
+      }
+    };
+    bScroll.on('scrollEnd', handlePullUp);
+    return () => {
+      bScroll.off('scrollEnd', handlePullUp);
+    };
+  }, [pullUp, pullUpDebounce, bScroll]);
+
+  useEffect(() => {
+    if (!bScroll || !pullDown) return undefined;
+    const handlePullDown = (position: any) => {
+      if (position.y > 50) {
+        console.log(34);
+        pullDownDebounce();
+      }
+    };
+    bScroll.on('touchEnd', handlePullDown);
+    return () => {
+      bScroll.off('touchEnd', handlePullDown);
+    };
+  }, [pullDown, pullDownDebounce, bScroll]);
 
   useEffect(() => {
     if (refresh && bScroll) {

@@ -66,6 +66,6 @@ export const httpSearchSuggest = (keywords: string) => {
 /**
  * 搜素
  */
-export const httpSearchResult = (keywords: string) => {
-  return axiosInstance.get(`/cloudsearch?keywords=${keywords}`);
+export const httpSearchResult = (keywords: string, offset: number = 0) => {
+  return axiosInstance.get(`/cloudsearch?keywords=${keywords}&limit=30&offset=${offset}`);
 };
