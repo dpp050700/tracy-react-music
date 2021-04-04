@@ -4,6 +4,8 @@ import classnames from 'classnames';
 import Scroll from '../../../../components/Scroll/Scroll';
 import styled from './SearchResult.module.css';
 import * as action from '../../store/actions';
+import Empty from '../../../../components/Empty/Empty';
+import EmptyImg from '../../../../assets/images/empty-image-default.png';
 
 const { header, resultItem, left, right, songName, songInfo } = styled;
 
@@ -15,14 +17,12 @@ interface ISearchResult {
 const SearchResult: React.FC<ISearchResult> = (props: ISearchResult) => {
   const { result, loadMoreSearchResult } = props;
   const iconClass = classnames(right, 'icon-erji iconfont');
-  const pullDown = () => {
-    console.log(1112);
-  };
+
   const pullUp = () => {
     loadMoreSearchResult();
   };
   return (
-    <Scroll pullDown={pullDown} pullUp={pullUp}>
+    <Scroll pullUp={pullUp}>
       {result.length ? (
         <div>
           <h1 className={header}>
@@ -46,7 +46,7 @@ const SearchResult: React.FC<ISearchResult> = (props: ISearchResult) => {
           })}
         </div>
       ) : (
-        <div>暂无数据</div>
+        <Empty image={EmptyImg} />
       )}
     </Scroll>
   );
