@@ -7,6 +7,7 @@ import Recommend from '../views/Recommend/Recommend';
 import Rank from '../views/Rank/Rank';
 import Login from '../views/Login/Login';
 import Search from '../views/Search/Search';
+import Album from '../views/Album/Album';
 
 export default [
   {
@@ -32,6 +33,12 @@ export default [
           {
             path: '/recommend',
             component: Recommend,
+            routes: [
+              {
+                path: '/recommend/:id',
+                component: Album,
+              },
+            ],
           },
           {
             path: '/search',

@@ -4,17 +4,14 @@ import { connect } from 'react-redux';
 import * as actions from '../../store/actions';
 
 const Content: React.FC = (props: any) => {
-  const { getLoginStatu, isLogin, route } = props;
-  console.log(isLogin);
+  const { getLoginStatu, route } = props;
   useEffect(() => {
     getLoginStatu();
   }, []);
   return <>{renderRoutes(route.routes)}</>;
 };
 
-const mapStateToProps = (state: any) => ({
-  isLogin: state.getIn(['user', 'isLogin']) || false,
-});
+const mapStateToProps = () => ({});
 const mapDispatchToProps = (dispatch: any) => {
   return {
     getLoginStatu() {

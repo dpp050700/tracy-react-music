@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { renderRoutes, RouteConfigComponentProps } from 'react-router-config';
 import * as actionTypes from './store/actions';
 import Banner, { IBannerItem } from './components/Banner/Banner';
 import RecommendList, { IRecommendItem } from './components/RecommendList/RecommendList';
 import Scroll from '../../components/Scroll/Scroll';
+import styled from './Recommend.module.css';
 
+const { root } = styled;
 interface IRecommend {
   bannerList: IBannerItem[];
   recommendList: IRecommendItem[];
@@ -12,8 +15,16 @@ interface IRecommend {
   getRecommendListDispatch: () => void;
 }
 
-const Recommend: React.FC<IRecommend> = (props: IRecommend) => {
-  const { bannerList, recommendList, getBannerDataDispatch, getRecommendListDispatch } = props;
+const Recommend: React.FC<IRecommend & RouteConfigComponentProps> = (
+  props: IRecommend & RouteConfigComponentProps,
+) => {
+  const {
+    bannerList,
+    recommendList,
+    route,
+    getBannerDataDispatch,
+    getRecommendListDispatch,
+  } = props;
 
   useEffect(() => {
     if (!bannerList.length) {
@@ -25,12 +36,15 @@ const Recommend: React.FC<IRecommend> = (props: IRecommend) => {
   }, []);
 
   return (
-    <Scroll>
-      <div>
-        <Banner list={bannerList} />
-        <RecommendList list={recommendList} />
-      </div>
-    </Scroll>
+    <div className={root}>
+      <Scroll>
+        <div>
+          <Banner list={bannerList} />
+          <RecommendList list={recommendList} />
+        </div>
+      </Scroll>
+      {route ? renderRoutes(route.routes) : null}
+    </div>
   );
 };
 
