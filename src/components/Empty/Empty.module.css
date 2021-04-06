@@ -1,17 +1,17 @@
-.root{
+.root {
   display: flex;
   align-items: center;
-  justify-content:center;
+  justify-content: center;
   flex-direction: column;
   padding: 10px 0;
 }
 
 .root img {
-  display:block;
+  display: block;
   width: 240px;
 }
 
 .root span {
   color: #999;
-  font-size:12px;
+  font-size: 12px;
 }

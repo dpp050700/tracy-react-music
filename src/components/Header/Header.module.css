@@ -1,0 +1,11 @@
+.root {
+  position: fixed;
+  height: 40px;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  line-height: 40px;
+}
+.headerTitle {
+  flex: 1;
+}

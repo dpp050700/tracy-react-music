@@ -1,4 +1,4 @@
-.root li{
+.root li {
   height: 32px;
   line-height: 32px;
   display: flex;
@@ -13,5 +13,5 @@
 
 .searchLabel {
   flex: 1;
-  font-size: 12px
+  font-size: 12px;
 }

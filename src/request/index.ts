@@ -69,3 +69,11 @@ export const httpSearchSuggest = (keywords: string) => {
 export const httpSearchResult = (keywords: string, offset: number = 0) => {
   return axiosInstance.get(`/cloudsearch?keywords=${keywords}&limit=30&offset=${offset}`);
 };
+
+/**
+ *
+ */
+
+export const httpAlbumDetail = (id: number) => {
+  return axiosInstance.get(`playlist/detail?id=${id}`);
+};

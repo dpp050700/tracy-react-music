@@ -4,7 +4,7 @@
   display: block;
 }
 .root:global(.is-active) .content {
-  transform: translateX(0)
+  transform: translateX(0);
 }
 .overlay {
   position: fixed;
