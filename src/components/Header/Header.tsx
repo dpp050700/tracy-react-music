@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import styled from './Header.module.css';
 
-const { root, headerTitle } = styled;
+const { root, headerTitle, iconWrapper } = styled;
 interface IIcon {
   name: string;
   click?: () => void;
@@ -23,12 +23,12 @@ const Header: React.FC<IHeader> = (props: IHeader) => {
   };
   return (
     <div className={rootClass}>
-      <div>
+      <div className={iconWrapper}>
         {leftIcons &&
           leftIcons.map(item => <i key={item.name} className={getIconClass(item.name)} />)}
       </div>
       <h1 className={headerTitle}>{title}</h1>
-      <div>
+      <div className={iconWrapper}>
         {rightIcons &&
           rightIcons.map(item => <i key={item.name} className={getIconClass(item.name)} />)}
       </div>

@@ -5,6 +5,7 @@ import styled from './Album.module.css';
 import * as actions from './store/actions';
 import Header from '../../components/Header/Header';
 import AlbumDetail from '../../components/AlbumDetail/AlbumDetail';
+import Scroll from '../../components/Scroll/Scroll';
 
 const { root } = styled;
 interface IAlbum {
@@ -39,7 +40,11 @@ const Album: React.FC<IAlbum & RouteComponentProps & HTMLDivElement> = (
   return (
     <div className={root}>
       <Header title="歌单" leftIcons={leftIcon} />
-      {albumDetail.id ? <AlbumDetail detail={albumDetail} /> : null}
+      {albumDetail.id ? (
+        <Scroll bounceTop={false}>
+          <AlbumDetail detail={albumDetail} />
+        </Scroll>
+      ) : null}
     </div>
   );
 };

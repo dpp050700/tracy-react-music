@@ -15,14 +15,16 @@ type directionType = 'horizental' | 'vertical';
 interface IScroll {
   children: React.ReactNode;
   direction?: directionType;
-  onScroll?: () => void;
   refresh?: boolean;
+  bounceTop?: boolean;
+  bounceBottom?: boolean;
+  onScroll?: () => void;
   pullUp?: () => void;
   pullDown?: () => void;
 }
 
 const Scroll: React.ForwardRefExoticComponent<IScroll> = forwardRef((props: IScroll, ref) => {
-  const { direction, refresh, onScroll, pullUp, pullDown } = props;
+  const { direction, refresh, bounceTop, bounceBottom, onScroll, pullUp, pullDown } = props;
   const [bScroll, setBScroll] = useState<any>(null);
   const scrollContentRef = useRef<HTMLDivElement | null>(null);
 
@@ -41,6 +43,10 @@ const Scroll: React.ForwardRefExoticComponent<IScroll> = forwardRef((props: IScr
         scrollY: direction === 'vertical',
         probeType: 3,
         click: true,
+        bounce: {
+          top: bounceTop,
+          bottom: bounceBottom,
+        },
       });
       setBScroll(scroll);
       return () => {
@@ -62,7 +68,6 @@ const Scroll: React.ForwardRefExoticComponent<IScroll> = forwardRef((props: IScr
     if (!bScroll || !pullUp) return undefined;
     const handlePullUp = () => {
       if (bScroll.y <= bScroll.maxScrollY + 100) {
-        console.log(12);
         pullUpDebounce();
       }
     };
@@ -76,7 +81,6 @@ const Scroll: React.ForwardRefExoticComponent<IScroll> = forwardRef((props: IScr
     if (!bScroll || !pullDown) return undefined;
     const handlePullDown = (position: any) => {
       if (position.y > 50) {
-        console.log(34);
         pullDownDebounce();
       }
     };
@@ -117,6 +121,8 @@ const Scroll: React.ForwardRefExoticComponent<IScroll> = forwardRef((props: IScr
 Scroll.defaultProps = {
   refresh: true,
   direction: 'vertical',
+  bounceTop: true,
+  bounceBottom: true,
 };
 
 export default Scroll;
