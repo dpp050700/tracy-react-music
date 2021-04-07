@@ -1,0 +1,78 @@
+.root {
+}
+
+.top {
+  height: 275px;
+  position: relative;
+  padding-top: 40px;
+}
+.topBackground {
+  background-position: 0 0;
+  background-size: 100% 100%;
+  background-repeat: repeat;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  filter: blur(20px);
+  z-index: -1;
+  top: 0;
+  left: 0;
+}
+
+.topBackground .filter {
+  position: absolute;
+  z-index: 10;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: rgba(7, 17, 27, 0.2);
+}
+
+.topContent {
+  display: flex;
+}
+
+.topImageWrapper {
+  width: 120px;
+  height: 120px;
+}
+
+.topImageWrapper img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.topDescWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 0 10px;
+}
+.topDescWrapper h1 {
+  color: #fff;
+  line-height: 24px;
+}
+.creatorWrapper {
+  display: flex;
+  align-items: center;
+}
+.creatorName {
+  margin-left: 12px;
+  color: rgb(187, 168, 168);
+}
+.creatorAvatar {
+  width: 32px;
+  height: 32px;
+  display: block;
+  border-radius: 50%;
+}
+
+.actionWrapper {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}

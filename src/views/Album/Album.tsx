@@ -6,7 +6,7 @@ import * as actions from './store/actions';
 import Header from '../../components/Header/Header';
 import AlbumDetail from '../../components/AlbumDetail/AlbumDetail';
 
-const { root, top } = styled;
+const { root } = styled;
 interface IAlbum {
   albumDetail: any;
   getAlbumDetail: (id: number) => void;
@@ -29,7 +29,7 @@ const Album: React.FC<IAlbum & RouteComponentProps & HTMLDivElement> = (
   const id = Number(routeParams.id);
   const leftIcon = [
     {
-      name: 'icon-jiantou2',
+      name: 'icon-fanhui',
     },
   ];
 
@@ -39,9 +39,7 @@ const Album: React.FC<IAlbum & RouteComponentProps & HTMLDivElement> = (
   return (
     <div className={root}>
       <Header title="歌单" leftIcons={leftIcon} />
-      <div className={top}>
-        <AlbumDetail detail={albumDetail} />
-      </div>
+      {albumDetail.id ? <AlbumDetail detail={albumDetail} /> : null}
     </div>
   );
 };

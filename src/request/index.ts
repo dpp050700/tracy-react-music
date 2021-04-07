@@ -71,9 +71,16 @@ export const httpSearchResult = (keywords: string, offset: number = 0) => {
 };
 
 /**
- *
+ * 获取专辑详情
  */
-
 export const httpAlbumDetail = (id: number) => {
   return axiosInstance.get(`playlist/detail?id=${id}`);
+};
+
+/**
+ * 收藏专辑
+ * 1 为收藏, 0 取消收藏
+ */
+export const httpCollectAlbum = (id: number, type: 0 | 1) => {
+  return axiosInstance.get(`/album/sub?id=${id}&t=${type}`);
 };
