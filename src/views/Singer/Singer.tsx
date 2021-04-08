@@ -1,7 +1,11 @@
 import React from 'react';
+import Toast from '../../base/Toast/toast';
 
 function Singer() {
-  return <div>Singer</div>;
+  const test = () => {
+    Toast.info({});
+  };
+  return <div onClick={test}>Singer</div>;
 }
 
 export default Singer;
