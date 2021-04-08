@@ -74,13 +74,13 @@ export const httpSearchResult = (keywords: string, offset: number = 0) => {
  * 获取专辑详情
  */
 export const httpAlbumDetail = (id: number) => {
-  return axiosInstance.get(`playlist/detail?id=${id}`);
+  return axiosInstance.get(`playlist/detail?id=${id}&timestamp=${new Date().getTime()}`);
 };
 
 /**
- * 收藏专辑
- * 1 为收藏, 0 取消收藏
+ * 收藏/取消收藏 歌单
+ * 1 为收藏, 2 取消收藏
  */
-export const httpCollectAlbum = (id: number, type: 0 | 1) => {
-  return axiosInstance.get(`/album/sub?id=${id}&t=${type}`);
+export const httpCollectAlbum = (id: number, type: 2 | 1) => {
+  return axiosInstance.get(`/playlist/subscribe?id=${id}&t=${type}`);
 };
