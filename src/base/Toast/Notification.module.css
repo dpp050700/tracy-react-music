@@ -1,0 +1,16 @@
+.root{
+  position: fixed;
+  z-index: 9999;
+  width: 120px;
+  height: 60px;
+  background-color: rgba(0,0,0,0.7);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  transition: opacity 0.3s linear;
+}
+
+.root .leave{
+  opacity: 0;
+}
