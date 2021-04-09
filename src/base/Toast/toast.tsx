@@ -6,7 +6,7 @@ interface INoticeConfig {
   type?: 'success' | 'error' | 'info' | 'loading' | 'text';
   content?: String | React.ReactNode;
   duration?: number;
-  icon?: string | React.ReactNode;
+  icon?: string;
   customIcon?: React.ReactNode;
   onClose?: () => void;
 }
@@ -50,40 +50,70 @@ const notice: noticeFunc = (config: INoticeConfig) => {
   );
 };
 
-const info: noticeFunc = data => {
-  const { ...config } = data;
-  config.type = 'info';
-  config.content = config.content || '信息';
-  config.icon = 'about';
+interface INoticeCreater {
+  content?: string;
+  duration?: number;
+  customIcon?: React.ReactNode;
+  onClose?: () => void;
+}
+
+const info: (data: INoticeCreater | string) => void = (data: INoticeCreater | string) => {
+  let config: INoticeConfig = { type: 'info', content: '信息', icon: 'about' };
+  if (typeof data === 'string' && data) {
+    config.content = data;
+  } else {
+    config = Object.assign(config, data);
+  }
+
   return notice(config);
 };
 
-const success: noticeFunc = data => {
-  const { ...config } = data;
-  config.type = 'success';
-  config.content = config.content || '操作成功';
-  config.icon = 'check';
+const success: (data: INoticeCreater | string) => void = (data: INoticeCreater | string) => {
+  let config: INoticeConfig = { type: 'success', content: '操作成功', icon: 'check' };
+  if (typeof data === 'string' && data) {
+    config.content = data;
+  } else {
+    config = Object.assign(config, data);
+  }
+
   return notice(config);
 };
-const error: noticeFunc = data => {
-  const { ...config } = data;
-  config.type = 'error';
-  config.content = config.content || '发生错误';
-  config.icon = 'warning-circle';
+
+const error: (data: INoticeCreater | string) => void = (data: INoticeCreater | string) => {
+  let config: INoticeConfig = { type: 'error', content: '操作失败', icon: 'warning-circle' };
+  if (typeof data === 'string' && data) {
+    config.content = data;
+  } else {
+    config = Object.assign(config, data);
+  }
+
   return notice(config);
 };
-const loading: noticeFunc = data => {
-  const { ...config } = data;
-  config.type = 'loading';
-  config.content = config.content || 'Loading...';
-  config.icon = 'loading';
+
+const loading: (data: INoticeCreater | string) => void = (data: INoticeCreater | string) => {
+  let config: INoticeConfig = { type: 'loading', content: 'Loading...', icon: 'loading' };
+  if (typeof data === 'string' && data) {
+    config.content = data;
+  } else {
+    config = Object.assign(config, data);
+  }
+
   return notice(config);
 };
-const text: noticeFunc = data => {
-  const { ...config } = data;
-  config.type = 'text';
-  config.content = config.content || '提示～';
-  config.icon = '';
+
+interface ITextCreater {
+  content?: string;
+  duration?: number;
+  onClose?: () => void;
+}
+const text: (data?: ITextCreater | string) => void = (data?: ITextCreater | string) => {
+  let config: INoticeConfig = { type: 'text', content: '提示～' };
+  if (typeof data === 'string' && data) {
+    config.content = data;
+  } else {
+    config = Object.assign(config, data || {});
+  }
+
   return notice(config);
 };
 

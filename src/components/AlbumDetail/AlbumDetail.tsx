@@ -35,9 +35,7 @@ const AlbumDetail: React.FC<IAlbumDetail> = (props: IAlbumDetail) => {
   const { detail, subscribedHandler } = props;
   const subscribedClick = () => {
     if (detail.subscribed) {
-      Toast.text({
-        content: '您已经收藏了～',
-      });
+      Toast.text('您已经收藏了～');
       return;
     }
     subscribedHandler();
