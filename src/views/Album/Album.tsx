@@ -11,6 +11,7 @@ const { root } = styled;
 interface IAlbum {
   albumDetail: any;
   getAlbumDetail: (id: number) => void;
+  changeAlbumSubscribedStatus: () => void;
 }
 
 interface IRouteParams {
@@ -22,6 +23,7 @@ const Album: React.FC<IAlbum & RouteComponentProps & HTMLDivElement> = (
 ) => {
   const {
     getAlbumDetail,
+    changeAlbumSubscribedStatus,
     albumDetail,
     match: { params },
   } = props;
@@ -42,7 +44,7 @@ const Album: React.FC<IAlbum & RouteComponentProps & HTMLDivElement> = (
       <Header title="歌单" leftIcons={leftIcon} />
       {albumDetail.id ? (
         <Scroll bounceTop={false}>
-          <AlbumDetail detail={albumDetail} />
+          <AlbumDetail detail={albumDetail} subscribedHandler={changeAlbumSubscribedStatus} />
         </Scroll>
       ) : null}
     </div>
@@ -57,6 +59,9 @@ const mapDispatchToProps = (dispatch: any) => {
   return {
     getAlbumDetail(id: number) {
       dispatch(actions.getAlbumDetail(id));
+    },
+    changeAlbumSubscribedStatus() {
+      dispatch(actions.changeAlbumSubscribedStatus());
     },
   };
 };

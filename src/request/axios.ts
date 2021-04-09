@@ -1,8 +1,6 @@
 import axios from 'axios';
-import { createHashHistory } from 'history';
+import history from '../utils/history';
 import Toast from '../base/Toast/toast';
-
-const history = createHashHistory();
 
 export const baseUrl = 'http://cijianshaonian.com:8880/';
 
@@ -25,7 +23,10 @@ axiosInstance.interceptors.response.use(
     } = error;
     const { code, msg } = data;
     if (code === 301) {
-      history.push('/login');
+      history.push({
+        pathname: '/login',
+      });
+      window.location.reload();
       return error;
     }
     Toast.error({ content: msg });

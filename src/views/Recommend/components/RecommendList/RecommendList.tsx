@@ -44,7 +44,7 @@ const RecommendList: React.FC<IRecommendList & RouteComponentProps> = (
           >
             <div className={recommendCount}>
               <i className=" music-icon-headset" />
-              <span>{Math.floor(item.playCount / 10000)}万</span>
+              <span>{Math.floor(item.playCount / 1000)}万</span>
             </div>
             <div className={recommendItemImage}>
               <img src={item.picUrl} alt="" />

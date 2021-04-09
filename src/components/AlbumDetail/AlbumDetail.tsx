@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from './AlbumDetail.module.css';
-import { httpCollectAlbum } from '../../request/index';
+import Toast from '../../base/Toast/toast';
 
 const {
   root,
@@ -28,12 +28,19 @@ const {
 
 interface IAlbumDetail {
   detail: any;
+  subscribedHandler: () => void;
 }
 
 const AlbumDetail: React.FC<IAlbumDetail> = (props: IAlbumDetail) => {
-  const { detail } = props;
-  const aa = () => {
-    httpCollectAlbum(detail.id, 1);
+  const { detail, subscribedHandler } = props;
+  const subscribedClick = () => {
+    if (detail.subscribed) {
+      Toast.text({
+        content: '您已经收藏了～',
+      });
+      return;
+    }
+    subscribedHandler();
   };
   return (
     <div className={root}>
@@ -63,8 +70,8 @@ const AlbumDetail: React.FC<IAlbumDetail> = (props: IAlbumDetail) => {
           <i className=" music-icon-love-outline" />
           点赞
         </li>
-        <li onClick={aa}>
-          <i className=" music-icon-subscribed" />
+        <li onClick={subscribedHandler}>
+          <i className={detail.subscribed ? 'music-icon-un-subscribed' : 'music-icon-subscribed'} />
           {detail.subscribed ? '取消' : '收藏'}
         </li>
       </ul>
@@ -77,9 +84,13 @@ const AlbumDetail: React.FC<IAlbumDetail> = (props: IAlbumDetail) => {
               <span className={sum}>(共{detail.tracks.length}首)</span>
             </span>
           </div>
-          <div className={songHeaderRight} onClick={aa}>
+          <div className={songHeaderRight} onClick={subscribedClick}>
             <i className=" music-icon-tianjiashoucang" />
-            收藏(0.1万)
+            收藏(
+            {detail.subscribedCount < 1000
+              ? detail.subscribedCount
+              : `${(detail.subscribedCount / 10000).toFixed(1)}万`}
+            )
           </div>
         </div>
         <ul className={songList}>

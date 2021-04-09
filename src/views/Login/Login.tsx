@@ -29,7 +29,7 @@ const Login: React.FC = (props: any) => {
 
   useEffect(() => {
     if (isLogin) {
-      history.push('/recommend');
+      history.go(-1);
     }
   }, [isLogin]);
 
