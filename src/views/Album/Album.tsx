@@ -30,7 +30,7 @@ const Album: React.FC<IAlbum & RouteComponentProps & HTMLDivElement> = (
   const id = Number(routeParams.id);
   const leftIcon = [
     {
-      name: 'icon-fanhui',
+      name: 'music-icon-back',
     },
   ];
 

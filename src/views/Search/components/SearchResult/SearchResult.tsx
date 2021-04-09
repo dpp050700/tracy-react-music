@@ -16,7 +16,7 @@ interface ISearchResult {
 
 const SearchResult: React.FC<ISearchResult> = (props: ISearchResult) => {
   const { result, loadMoreSearchResult } = props;
-  const iconClass = classnames(right, 'icon-erji iconfont');
+  const iconClass = classnames(right, 'music-icon-erji ');
 
   const pullUp = () => {
     loadMoreSearchResult();
@@ -26,7 +26,7 @@ const SearchResult: React.FC<ISearchResult> = (props: ISearchResult) => {
       {result.length ? (
         <div>
           <h1 className={header}>
-            <i className="icon-erji iconfont" />
+            <i className="music-icon-headset " />
             播放全部
           </h1>
           {result.map((item, index) => {

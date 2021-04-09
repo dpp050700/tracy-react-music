@@ -19,7 +19,7 @@ const Header: React.FC<IHeader> = (props: IHeader) => {
   const { title, leftIcons, rightIcons, className = '' } = props;
   const rootClass = classnames(root, className);
   const getIconClass = (name: string) => {
-    return classnames(name, 'iconfont');
+    return classnames(name);
   };
   return (
     <div className={rootClass}>

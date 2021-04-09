@@ -44,7 +44,7 @@ const SearchBox: React.FC<ISearchBox> = (props: ISearchBox) => {
     <div className={root}>
       <div className={searchInputWrap}>
         <div className={searchIcon}>
-          <i className="iconfont icon-sousuo" />
+          <i className=" music-icon-search" />
         </div>
         <input
           type="text"
@@ -59,7 +59,7 @@ const SearchBox: React.FC<ISearchBox> = (props: ISearchBox) => {
         />
         {keywords ? (
           <div className={searchClear} onClick={handlerClearClick}>
-            <i className="iconfont icon-shibai" />
+            <i className=" music-icon-circle-close" />
           </div>
         ) : null}
       </div>

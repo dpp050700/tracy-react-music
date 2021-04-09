@@ -56,29 +56,29 @@ const AlbumDetail: React.FC<IAlbumDetail> = (props: IAlbumDetail) => {
       </div>
       <ul className={actionWrapper}>
         <li>
-          <i className="iconfont icon-xiaoxi" />
+          <i className=" music-icon-chat-dot-square" />
           评论
         </li>
         <li>
-          <i className="iconfont icon-aixin-xian" />
+          <i className=" music-icon-love-outline" />
           点赞
         </li>
         <li onClick={aa}>
-          <i className="iconfont icon-tianjiashoucang" />
+          <i className=" music-icon-subscribed" />
           {detail.subscribed ? '取消' : '收藏'}
         </li>
       </ul>
       <div className={songWrapper}>
         <div className={songHeader}>
           <div className={songHeaderLeft}>
-            <i className="iconfont icon-erji" />
+            <i className=" music-icon-erji" />
             <span>
               <span>播放全部</span>
               <span className={sum}>(共{detail.tracks.length}首)</span>
             </span>
           </div>
           <div className={songHeaderRight} onClick={aa}>
-            <i className="iconfont icon-tianjiashoucang" />
+            <i className=" music-icon-tianjiashoucang" />
             收藏(0.1万)
           </div>
         </div>

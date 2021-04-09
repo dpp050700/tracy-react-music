@@ -17,7 +17,7 @@ export interface ISwipeAction {
 
 const SwipeAction: React.FC<ISwipeAction> = (props: ISwipeAction) => {
   const { list, name } = props;
-  const arrowClass = classnames('iconfont icon-jiantou', swipeArrow);
+  const arrowClass = classnames(' music-icon-arrow-right', swipeArrow);
   const swipeNameClass = classnames('border-bottom', swipeName);
   const swipeItemClass = classnames('border-bottom', swipeItem);
   return (
@@ -27,7 +27,7 @@ const SwipeAction: React.FC<ISwipeAction> = (props: ISwipeAction) => {
         {list.map(item => {
           return (
             <li className={swipeItemClass} key={item.label}>
-              <i className={`iconfont icon-${item.icon}`} />
+              <i className={` music-icon-${item.icon}`} />
               <div className={swipeLabel}>{item.label}</div>
               <div className={swipeContent}>{item.content}</div>
               <i className={arrowClass} />

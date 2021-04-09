@@ -36,9 +36,6 @@ const notice: noticeFunc = (config: INoticeConfig) => {
     />,
     div,
   );
-  // return (
-  //   <Notification content={content} type={type} icon={icon} onClose={onClose} duration={duration} />
-  // );
 };
 
 const info: noticeFunc = data => {

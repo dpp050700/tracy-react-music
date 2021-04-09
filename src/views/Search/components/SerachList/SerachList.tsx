@@ -22,7 +22,7 @@ const SerachList: React.FC<ISearchList> = (props: ISearchList) => {
     <div className={root}>
       <h1 className={title}>
         {label}
-        <i className="iconfont icon-shanchu" onClick={iconClick} />
+        <i className=" music-icon-delete" onClick={iconClick} />
       </h1>
       {list.length ? (
         <ul className={searchList}>

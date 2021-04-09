@@ -11,7 +11,7 @@ interface ISuggestList {
 }
 const SuggestList: React.FC<ISuggestList> = (props: ISuggestList) => {
   const { list, getSearchValue } = props;
-  const iconClass = classnames('iconfont icon-sousuo', searchIcon);
+  const iconClass = classnames(' music-icon-search', searchIcon);
   const labelClass = classnames('border-bottom', searchLabel);
   return (
     <ul className={root}>

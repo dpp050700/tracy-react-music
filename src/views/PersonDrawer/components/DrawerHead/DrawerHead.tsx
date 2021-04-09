@@ -22,7 +22,7 @@ const DrawerHead: React.FC<IDrawerHead> = (props: IDrawerHead) => {
       <Link to={linkPath}>
         <div className={userName}>
           {isLogin ? userInfo.nickname : '立即登陆'}
-          <i className="iconfont icon-jiantou" />
+          <i className=" music-icon-arrow-right" />
         </div>
       </Link>
     </div>

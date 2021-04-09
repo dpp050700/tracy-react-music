@@ -6,11 +6,11 @@ const swipeActionList: ISwipeAction[] = [
     list: [
       {
         label: '我的消息',
-        icon: 'wodexiaoxi',
+        icon: 'message',
       },
       {
         label: '云贝中心',
-        icon: 'shouye',
+        icon: 'home',
       },
       {
         label: '创作者中心',
@@ -23,19 +23,19 @@ const swipeActionList: ISwipeAction[] = [
     list: [
       {
         label: '云村有票',
-        icon: 'fapiao',
+        icon: 'invoice',
       },
       {
         label: '商城',
-        icon: 'gouwuche',
+        icon: 'cart',
       },
       {
         label: '游戏专区',
-        icon: 'youxiji',
+        icon: 'game',
       },
       {
         label: '口袋彩铃',
-        icon: 'icon--',
+        icon: 'music',
       },
     ],
   },
@@ -44,15 +44,15 @@ const swipeActionList: ISwipeAction[] = [
     list: [
       {
         label: '设置',
-        icon: '40shezhi-',
+        icon: 'setting',
       },
       {
         label: '个性装扮',
-        icon: 'chuangzuo',
+        icon: 'edit',
       },
       {
         label: '音乐黑名单',
-        icon: 'heimingdan',
+        icon: 'blacklist',
       },
     ],
   },
@@ -60,19 +60,19 @@ const swipeActionList: ISwipeAction[] = [
     list: [
       {
         label: '我的订单',
-        icon: 'wodedingdan',
+        icon: 'order',
       },
       {
         label: '优惠券',
-        icon: 'youhuiquan',
+        icon: 'ticket',
       },
       {
         label: '我的客服',
-        icon: 'erji',
+        icon: 'service',
       },
       {
         label: '关于',
-        icon: 'guanyu',
+        icon: 'about',
       },
     ],
   },

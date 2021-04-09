@@ -6,8 +6,8 @@ import style from './navbar.module.css';
 
 const { wrapper, menuIcon, searchIcon } = style;
 
-const menuIconClass = classnames(menuIcon, 'iconfont icon-gengduo');
-const searchIconClass = classnames(searchIcon, 'iconfont icon-sousuo');
+const menuIconClass = classnames(menuIcon, ' music-icon-more');
+const searchIconClass = classnames(searchIcon, ' music-icon-search');
 
 interface INavBar extends RouteComponentProps<any> {
   leftClick: () => void;
