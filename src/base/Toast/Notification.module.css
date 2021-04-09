@@ -1,16 +1,36 @@
-.root{
+.root {
   position: fixed;
   z-index: 9999;
-  width: 120px;
-  height: 60px;
-  background-color: rgba(0,0,0,0.7);
+  min-width: 120px;
+  background-color: rgba(0, 0, 0, 0.7);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: #fff;
   transition: opacity 0.3s linear;
+  padding: 16px;
+  border-radius: 5px;
 }
 
-.root .leave{
+.root .leave {
   opacity: 0;
+}
+
+.iconWrapper {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  margin: auto;
+  margin-bottom: 8px;
+}
+.iconFont {
+  font-size: 36px;
+}
+
+.textWrapper {
+  text-align: center;
+  line-height: 20px;
+  font-size: 12px;
+  letter-spacing: 1px;
 }

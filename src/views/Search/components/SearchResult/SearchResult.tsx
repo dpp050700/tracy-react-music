@@ -16,7 +16,7 @@ interface ISearchResult {
 
 const SearchResult: React.FC<ISearchResult> = (props: ISearchResult) => {
   const { result, loadMoreSearchResult } = props;
-  const iconClass = classnames(right, 'music-icon-erji ');
+  const iconClass = classnames(right, 'music-icon-headset ');
 
   const pullUp = () => {
     loadMoreSearchResult();
