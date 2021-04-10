@@ -8,33 +8,56 @@ interface IIcon {
   click?: () => void;
 }
 
-interface IHeader {
+interface IHeader extends React.RefAttributes<HTMLDivElement> {
   title?: string;
   leftIcons?: IIcon[];
   rightIcons?: IIcon[];
   className?: string;
 }
 
-const Header: React.FC<IHeader> = (props: IHeader) => {
-  const { title, leftIcons, rightIcons, className = '' } = props;
-  const rootClass = classnames(root, className);
-  const getIconClass = (name: string) => {
-    return classnames(name);
-  };
-  return (
-    <div className={rootClass}>
-      <div className={iconWrapper}>
-        {leftIcons &&
-          leftIcons.map(item => <i key={item.name} className={getIconClass(item.name)} />)}
+const Header: React.FC<IHeader> = React.forwardRef(
+  (props: IHeader, ref: React.Ref<HTMLDivElement>) => {
+    const { title, leftIcons, rightIcons, className = '' } = props;
+    const rootClass = classnames(root, className);
+    const getIconClass = (name: string) => {
+      return classnames(name);
+    };
+    const iconClick = (clickHandler?: () => void) => {
+      if (clickHandler) {
+        clickHandler();
+      }
+    };
+    return (
+      <div className={rootClass} ref={ref}>
+        <div className={iconWrapper}>
+          {leftIcons &&
+            leftIcons.map((item: any) => (
+              <i
+                key={item.name}
+                className={getIconClass(item.name)}
+                onClick={() => {
+                  iconClick(item.click);
+                }}
+              />
+            ))}
+        </div>
+        <h1 className={headerTitle}>{title}</h1>
+        <div className={iconWrapper}>
+          {rightIcons &&
+            rightIcons.map((item: any) => (
+              <i
+                key={item.name}
+                className={getIconClass(item.name)}
+                onClick={() => {
+                  iconClick(item.click);
+                }}
+              />
+            ))}
+        </div>
       </div>
-      <h1 className={headerTitle}>{title}</h1>
-      <div className={iconWrapper}>
-        {rightIcons &&
-          rightIcons.map(item => <i key={item.name} className={getIconClass(item.name)} />)}
-      </div>
-    </div>
-  );
-};
+    );
+  },
+);
 
 Header.defaultProps = {
   title: '',

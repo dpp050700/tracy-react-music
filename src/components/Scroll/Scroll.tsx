@@ -12,13 +12,18 @@ import { debounce } from '../../utils/utils';
 
 type directionType = 'horizental' | 'vertical';
 
+interface IPosition {
+  x: number;
+  y: number;
+}
+
 interface IScroll {
   children: React.ReactNode;
   direction?: directionType;
   refresh?: boolean;
   bounceTop?: boolean;
   bounceBottom?: boolean;
-  onScroll?: () => void;
+  onScroll?: (pos: IPosition) => void;
   pullUp?: () => void;
   pullDown?: () => void;
 }
