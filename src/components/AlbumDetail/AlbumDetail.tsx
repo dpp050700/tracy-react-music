@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import styled from './AlbumDetail.module.css';
 import Toast from '../../base/Toast/toast';
 
@@ -29,10 +30,11 @@ const {
 interface IAlbumDetail {
   detail: any;
   subscribedHandler: () => void;
+  playHandler: () => void;
 }
 
 const AlbumDetail: React.FC<IAlbumDetail> = (props: IAlbumDetail) => {
-  const { detail, subscribedHandler } = props;
+  const { detail, subscribedHandler, playHandler } = props;
   const subscribedClick = () => {
     if (detail.subscribed) {
       Toast.text('您已经收藏了～');
@@ -40,6 +42,7 @@ const AlbumDetail: React.FC<IAlbumDetail> = (props: IAlbumDetail) => {
     }
     subscribedHandler();
   };
+
   return (
     <div className={root}>
       <div className={top}>
@@ -78,7 +81,7 @@ const AlbumDetail: React.FC<IAlbumDetail> = (props: IAlbumDetail) => {
           <div className={songHeaderLeft}>
             <i className=" music-icon-erji" />
             <span>
-              <span>播放全部</span>
+              <span onClick={playHandler}>播放全部</span>
               <span className={sum}>(共{detail.tracks.length}首)</span>
             </span>
           </div>
@@ -109,4 +112,8 @@ const AlbumDetail: React.FC<IAlbumDetail> = (props: IAlbumDetail) => {
   );
 };
 
-export default React.memo(AlbumDetail);
+const mapStateToProps = () => ({});
+
+const mapDsipatchToProps = () => ({});
+
+export default connect(mapStateToProps, mapDsipatchToProps)(React.memo(AlbumDetail));

@@ -4,6 +4,7 @@ import Navbar from './components/Navbar/Navbar';
 import Tabs from './components/Tabs/Tabs';
 import style from './Home.module.scss';
 import PersonDrawer from '../PersonDrawer/PersonDrawer';
+import Player from '../Player/Player';
 
 const { wrapper, content } = style;
 
@@ -25,6 +26,7 @@ function Home(props: any) {
       />
       <Tabs />
       <div className={content}>{renderRoutes(route.routes)}</div>
+      <Player />
     </div>
   );
 }

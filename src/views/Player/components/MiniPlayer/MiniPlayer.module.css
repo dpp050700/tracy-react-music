@@ -1,0 +1,79 @@
+.root {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 10px;
+  z-index: 99;
+}
+
+.imgWrapper {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.imgWrapper :global {
+  animation: rotate 8s linear infinite;
+}
+.imgWrapper:global(.paused) {
+  animation-play-state: paused;
+}
+
+.imgWrapper img {
+  width: 100%;
+  height: 100%;
+}
+.descWrapper {
+  flex: 1;
+  overflow: hidden;
+}
+.descName {
+  font-size: 14px;
+  color: rgb(46, 48, 48);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  line-height: 22px;
+}
+.descSinger {
+  font-size: 12px;
+  color: rgb(187, 168, 168);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  line-height: 22px;
+  white-space: nowrap;
+}
+.control {
+  margin: 0 10px;
+}
+.controlBtn {
+  font-size: 16px;
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  color: #d44439;
+  font-weight: 600;
+}
+.playList {
+  font-size: 28px;
+  text-align: center;
+  color: #d44439;
+  font-weight: 600;
+}
+
+@keyframes: global(rotate){
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+};

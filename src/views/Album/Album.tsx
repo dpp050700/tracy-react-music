@@ -6,6 +6,7 @@ import * as actions from './store/actions';
 import Header from '../../components/Header/Header';
 import AlbumDetail from '../../components/AlbumDetail/AlbumDetail';
 import Scroll from '../../components/Scroll/Scroll';
+import * as playerActions from '../Player/store/actions';
 
 const HEAD_HEIGHT = 40;
 
@@ -14,6 +15,7 @@ interface IAlbum {
   albumDetail: any;
   getAlbumDetail: (id: number) => void;
   changeAlbumSubscribedStatus: () => void;
+  initPlayerData: (list: any[]) => void;
 }
 
 interface IRouteParams {
@@ -26,6 +28,7 @@ const Album: React.FC<IAlbum & RouteComponentProps & HTMLDivElement> = (
   const {
     getAlbumDetail,
     changeAlbumSubscribedStatus,
+    initPlayerData,
     albumDetail,
     match: { params },
   } = props;
@@ -68,12 +71,19 @@ const Album: React.FC<IAlbum & RouteComponentProps & HTMLDivElement> = (
   useEffect(() => {
     getAlbumDetail(id);
   }, [id]);
+
   return (
     <div className={root}>
       <Header title="歌单" leftIcons={leftIcon} ref={headerEl} />
       {albumDetail.id ? (
         <Scroll bounceTop={false} onScroll={onScrollHandler}>
-          <AlbumDetail detail={albumDetail} subscribedHandler={changeAlbumSubscribedStatus} />
+          <AlbumDetail
+            detail={albumDetail}
+            subscribedHandler={changeAlbumSubscribedStatus}
+            playHandler={() => {
+              initPlayerData(albumDetail.tracks);
+            }}
+          />
         </Scroll>
       ) : null}
     </div>
@@ -91,6 +101,9 @@ const mapDispatchToProps = (dispatch: any) => {
     },
     changeAlbumSubscribedStatus() {
       dispatch(actions.changeAlbumSubscribedStatus());
+    },
+    initPlayerData(list: any[]) {
+      dispatch(playerActions.initPlayerData(list));
     },
   };
 };

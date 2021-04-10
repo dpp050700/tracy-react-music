@@ -1,0 +1,18 @@
+.root {
+  position: relative;
+}
+
+.root circle {
+  stroke-width: 8px;
+  transform-origin: center;
+}
+
+.root circle.progressBackground {
+  transform: scale(0.9);
+  stroke: rgba(212, 68, 57, 0.5);
+}
+
+.root circle.progressBar {
+  transform: scale(0.9) rotate(-90deg);
+  stroke: #d44439;
+}
