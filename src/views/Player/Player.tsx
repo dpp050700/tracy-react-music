@@ -5,18 +5,30 @@ import MiniPlayer from './components/MiniPlayer/MiniPlayer';
 import { getSongUrl } from '../../utils/utils';
 import * as actions from './store/actions';
 import Toast from '../../base/Toast/toast';
+import NormalPlayer from './components/NormalPlayer/NormalPlayer';
 
 interface IPlayer {
   currentSong: any;
   playList: any[];
   currentIndex: number;
   playing: boolean;
+  isFull: boolean;
   nextSong: () => void;
   changePlaying: (playing: boolean) => void;
+  toggleFull: (toggleFull: boolean) => void;
 }
 
 const Player: React.FC<IPlayer> = (props: IPlayer) => {
-  const { currentSong, playList, currentIndex, nextSong, playing, changePlaying } = props;
+  const {
+    currentSong,
+    playList,
+    currentIndex,
+    nextSong,
+    playing,
+    isFull,
+    changePlaying,
+    toggleFull,
+  } = props;
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -63,7 +75,7 @@ const Player: React.FC<IPlayer> = (props: IPlayer) => {
 
   return (
     <>
-      {playList.length ? (
+      {playList.length && !isFull ? (
         <MiniPlayer
           current={currentSong}
           percent={percent}
@@ -71,6 +83,18 @@ const Player: React.FC<IPlayer> = (props: IPlayer) => {
           playingClick={() => {
             changePlaying(!playing);
             setPause(true);
+          }}
+          toggleFull={() => {
+            toggleFull(!isFull);
+          }}
+        />
+      ) : null}
+      {playList.length && isFull ? (
+        <NormalPlayer
+          current={currentSong}
+          percent={percent}
+          toggleFull={() => {
+            toggleFull(!isFull);
           }}
         />
       ) : null}
@@ -84,6 +108,7 @@ const mapStateToProps = (state: any) => ({
   playList: state.getIn(['player', 'playList']).toJS(),
   currentIndex: state.getIn(['player', 'currentIndex']),
   playing: state.getIn(['player', 'playing']),
+  isFull: state.getIn(['player', 'isFull']),
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
@@ -92,6 +117,9 @@ const mapDispatchToProps = (dispatch: any) => ({
   },
   changePlaying(playing: boolean) {
     dispatch(actions.changePlaying(playing));
+  },
+  toggleFull(isFull: boolean) {
+    dispatch(actions.changePlayerFull(isFull));
   },
 });
 

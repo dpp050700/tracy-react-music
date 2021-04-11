@@ -25,6 +25,11 @@ export const changePlaying = (data: any) => ({
   data: fromJS(data),
 });
 
+export const changePlayerFull = (data: any) => ({
+  type: actionTypes.CHANGE_PLAYER_FULL,
+  data: fromJS(data),
+});
+
 export const initPlayerData = (playList: any[]) => {
   return (dispatch: any, getState: any) => {
     if (playList.length) {

@@ -9,7 +9,7 @@ interface IIcon {
 }
 
 interface IHeader extends React.RefAttributes<HTMLDivElement> {
-  title?: string;
+  title?: string | React.ReactNode;
   leftIcons?: IIcon[];
   rightIcons?: IIcon[];
   className?: string;

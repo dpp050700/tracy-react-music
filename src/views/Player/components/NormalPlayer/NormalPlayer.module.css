@@ -1,0 +1,77 @@
+.root{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 99;
+  background-color: rgb(242, 243, 244);
+}
+div.headerWrapper{
+  color: #000;
+}
+
+.headerWrapper :global(.music-icon-arrow-down) {
+  font-size: 20px;
+}
+
+.headerContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  margin-left: 6px;
+}
+
+.headerName{
+  font-size: 16px;
+  color: rgb(46, 48, 48);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  line-height: 1;
+  font-size: 14px;
+}
+
+.headerSinger{
+  line-height: 1;
+  font-size: 14px;
+  color: rgb(187, 168, 168);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-top: 5px;
+  font-size: 12px;
+}
+
+.background {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.6;
+  filter: blur(20px);
+}
+.layer {
+  background: rgb(46, 48, 48);
+  opacity: 0.3;
+  filter: none;
+}
+
+.content {
+  position: fixed;
+  width: 100%;
+  top: 45px;
+  bottom: 120px;
+  white-space: nowrap;
+  font-size: 0px;
+  overflow: hidden;
+}
+
+.bottom{
+  position: absolute;
+  bottom: 50px;
+  width: 100%;
+}

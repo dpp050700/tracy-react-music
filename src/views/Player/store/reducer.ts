@@ -14,6 +14,7 @@ const defaultState = fromJS({
   sequenceList: [],
   mode: PlayerMode.sequence,
   playing: false,
+  isFull: false,
 });
 
 export default (state = defaultState, action: IAction) => {
@@ -28,6 +29,8 @@ export default (state = defaultState, action: IAction) => {
       return state.set('currentSong', action.data);
     case actionTypes.CHANGE_PLAYER_PLAYING:
       return state.set('playing', action.data);
+    case actionTypes.CHANGE_PLAYER_FULL:
+      return state.set('isFull', action.data);
     default:
       return state;
   }

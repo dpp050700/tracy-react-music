@@ -19,17 +19,18 @@ interface IMiniPlayer {
   percent: number;
   playing: boolean;
   playingClick: () => void;
+  toggleFull: () => void;
 }
 
 const MiniPlayer: React.FC<IMiniPlayer> = (props: IMiniPlayer) => {
-  const { current, percent, playing, playingClick } = props;
+  const { current, percent, playing, playingClick, toggleFull } = props;
   const controlBtnClass = classnames(
     controlBtn,
     `${playing ? 'music-icon-video-pause' : 'music-icon-video-play'}`,
   );
   const imgWrapperClass = classnames(imgWrapper, { paused: !playing });
   return (
-    <div className={root}>
+    <div className={root} onClick={toggleFull}>
       <div className={imgWrapperClass}>
         <img src={current.al.picUrl} alt="" />
       </div>
