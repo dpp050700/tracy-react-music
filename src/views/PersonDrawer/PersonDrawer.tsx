@@ -66,4 +66,4 @@ const mapDispatchToProps = (dispatch: any) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(PersonDrawer);
+export default connect(mapStateToProps, mapDispatchToProps)(React.memo(PersonDrawer));

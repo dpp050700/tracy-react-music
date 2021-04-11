@@ -8,11 +8,12 @@ interface IAction {
 }
 
 const defaultState = fromJS({
-  currentIndex: null,
+  currentIndex: -1,
   currentSong: null,
   playList: [],
   sequenceList: [],
   mode: PlayerMode.sequence,
+  playing: false,
 });
 
 export default (state = defaultState, action: IAction) => {
@@ -25,6 +26,8 @@ export default (state = defaultState, action: IAction) => {
       return state.set('currentIndex', action.data);
     case actionTypes.CHANGE_CURRENT_SONG:
       return state.set('currentSong', action.data);
+    case actionTypes.CHANGE_PLAYER_PLAYING:
+      return state.set('playing', action.data);
     default:
       return state;
   }

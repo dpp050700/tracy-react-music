@@ -6,10 +6,11 @@ const { root, progressBar, progressBackground } = styled;
 interface IProgressCircle {
   radius?: number;
   children?: React.ReactNode;
+  percent: number;
 }
 
 const ProgressCircle: React.FC<IProgressCircle> = (props: IProgressCircle) => {
-  const { radius, children } = props;
+  const { radius, children, percent } = props;
   return (
     <div className={root}>
       <svg
@@ -27,7 +28,7 @@ const ProgressCircle: React.FC<IProgressCircle> = (props: IProgressCircle) => {
           cy="50"
           fill="transparent"
           strokeDasharray={Math.PI * 100}
-          strokeDashoffset={Math.PI * 0}
+          strokeDashoffset={Math.PI * 100 * (1 - percent)}
         />
       </svg>
       {children}

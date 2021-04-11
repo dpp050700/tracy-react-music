@@ -34,4 +34,4 @@ const mapStateToProps = (state: any) => ({
   isLogin: state.getIn(['user', 'isLogin']) || false,
 });
 
-export default connect(mapStateToProps)(DrawerHead);
+export default connect(mapStateToProps)(React.memo(DrawerHead));

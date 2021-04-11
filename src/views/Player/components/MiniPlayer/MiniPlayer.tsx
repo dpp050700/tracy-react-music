@@ -16,22 +16,29 @@ const {
 
 interface IMiniPlayer {
   current: any;
+  percent: number;
+  playing: boolean;
+  playingClick: () => void;
 }
 
 const MiniPlayer: React.FC<IMiniPlayer> = (props: IMiniPlayer) => {
-  const { current } = props;
-  const controlBtnClass = classnames(controlBtn, 'music-icon-video-play');
+  const { current, percent, playing, playingClick } = props;
+  const controlBtnClass = classnames(
+    controlBtn,
+    `${playing ? 'music-icon-video-pause' : 'music-icon-video-play'}`,
+  );
+  const imgWrapperClass = classnames(imgWrapper, { paused: !playing });
   return (
     <div className={root}>
-      <div className={imgWrapper}>
+      <div className={imgWrapperClass}>
         <img src={current.al.picUrl} alt="" />
       </div>
       <div className={descWrapper}>
         <p className={descName}>{current.name}</p>
         <p className={descSinger}>{current.ar.map((_: any) => _.name).join('/')}</p>
       </div>
-      <div className={control}>
-        <ProgressCircle radius={32}>
+      <div className={control} onClick={playingClick}>
+        <ProgressCircle radius={32} percent={percent}>
           <i className={controlBtnClass} />
         </ProgressCircle>
       </div>

@@ -57,4 +57,4 @@ const RecommendList: React.FC<IRecommendList & RouteComponentProps> = (
   );
 };
 
-export default withRouter(RecommendList);
+export default withRouter(React.memo(RecommendList));

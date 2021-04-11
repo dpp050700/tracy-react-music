@@ -20,6 +20,11 @@ export const changeCurrentSong = (data: any) => ({
   data: fromJS(data),
 });
 
+export const changePlaying = (data: any) => ({
+  type: actionTypes.CHANGE_PLAYER_PLAYING,
+  data: fromJS(data),
+});
+
 export const initPlayerData = (playList: any[]) => {
   return (dispatch: any, getState: any) => {
     if (playList.length) {

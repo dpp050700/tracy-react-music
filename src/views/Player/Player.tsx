@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/media-has-caption */
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import MiniPlayer from './components/MiniPlayer/MiniPlayer';
 import { getSongUrl } from '../../utils/utils';
@@ -10,38 +10,71 @@ interface IPlayer {
   currentSong: any;
   playList: any[];
   currentIndex: number;
+  playing: boolean;
   nextSong: () => void;
+  changePlaying: (playing: boolean) => void;
 }
 
 const Player: React.FC<IPlayer> = (props: IPlayer) => {
-  const { currentSong, playList, currentIndex, nextSong } = props;
+  const { currentSong, playList, currentIndex, nextSong, playing, changePlaying } = props;
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [isPause, setPause] = useState(false);
+
+  const percent = Number.isNaN(currentTime / duration) ? 0 : currentTime / duration;
 
   const handleEnd = () => {
     nextSong();
   };
 
   const handleError = () => {
+    setPause(false);
     nextSong();
     Toast.error('播放出错');
   };
 
+  const timeUpdate = (e: any) => {
+    setCurrentTime(e.target.currentTime);
+  };
+
   useEffect(() => {
-    if (currentIndex === -1 || !playList.length) {
+    if (audioRef && audioRef.current) {
+      if (playing) {
+        audioRef.current.play();
+        return;
+      }
+      audioRef.current.pause();
+    }
+  }, [playing]);
+
+  useEffect(() => {
+    if (currentIndex === -1 || !playList.length || isPause) {
       return;
     }
+    console.log(currentIndex, playList);
     if (audioRef && audioRef.current) {
-      console.log(getSongUrl(currentSong.id));
       audioRef.current.src = getSongUrl(currentSong.id);
-      audioRef.current.playbackRate = 10;
+      changePlaying(true);
       audioRef.current.play();
+      setDuration(currentSong.dt / 1000 || 0);
     }
   }, [currentIndex, playList]);
 
   return (
     <>
-      {playList.length ? <MiniPlayer current={currentSong} /> : null}
-      <audio ref={audioRef} onEnded={handleEnd} onError={handleError} />
+      {playList.length ? (
+        <MiniPlayer
+          current={currentSong}
+          percent={percent}
+          playing={playing}
+          playingClick={() => {
+            changePlaying(!playing);
+            setPause(true);
+          }}
+        />
+      ) : null}
+      <audio ref={audioRef} onEnded={handleEnd} onError={handleError} onTimeUpdate={timeUpdate} />
     </>
   );
 };
@@ -50,12 +83,16 @@ const mapStateToProps = (state: any) => ({
   currentSong: state.getIn(['player', 'currentSong'])?.toJS(),
   playList: state.getIn(['player', 'playList']).toJS(),
   currentIndex: state.getIn(['player', 'currentIndex']),
+  playing: state.getIn(['player', 'playing']),
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
   nextSong() {
     dispatch(actions.nextSong());
   },
+  changePlaying(playing: boolean) {
+    dispatch(actions.changePlaying(playing));
+  },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Player);
+export default connect(mapStateToProps, mapDispatchToProps)(React.memo(Player));

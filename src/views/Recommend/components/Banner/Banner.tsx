@@ -56,4 +56,4 @@ const Banner: React.FC<IBannerProps> = (props: IBannerProps) => {
   );
 };
 
-export default Banner;
+export default React.memo(Banner);

@@ -15,4 +15,4 @@ const mapStateToProps = (state: any) => {
     count: state.getIn(['user', 'messageNumber']),
   };
 };
-export default connect(mapStateToProps)(MessageNumber);
+export default connect(mapStateToProps)(React.memo(MessageNumber));
