@@ -30,6 +30,11 @@ export const changePlayerFull = (data: any) => ({
   data: fromJS(data),
 });
 
+export const changePlayerMode = (data: any) => ({
+  type: actionTypes.CHANGE_PLAYER_MODE,
+  data: fromJS(data),
+});
+
 export const initPlayerData = (playList: any[]) => {
   return (dispatch: any, getState: any) => {
     if (playList.length) {
@@ -65,5 +70,18 @@ export const nextSong = () => {
     const currentSong = sequenceList[currentIndex];
     dispatch(changeCurrentIndex(currentIndex));
     dispatch(changeCurrentSong(currentSong));
+  };
+};
+
+export const togglePlayerMode = () => {
+  return (dispatch: any, getState: any) => {
+    const mode = getState().getIn(['player', 'mode']);
+    let nextMode: number = 0;
+    if (mode === 2) {
+      nextMode = 0;
+    } else {
+      nextMode = mode + 1;
+    }
+    dispatch(changePlayerMode(nextMode));
   };
 };

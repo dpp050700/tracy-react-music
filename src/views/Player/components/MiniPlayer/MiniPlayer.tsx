@@ -30,6 +30,12 @@ const MiniPlayer: React.FC<IMiniPlayer> = (props: IMiniPlayer) => {
     `${playing ? 'music-icon-video-pause' : 'music-icon-video-play'}`,
   );
   const imgWrapperClass = classnames(imgWrapper, { paused: !playing });
+  const playingClickHandler = (e: any) => {
+    console.log(e);
+    // console.log(event);
+    e.stopPropagation();
+    playingClick();
+  };
   return (
     <>
       {isFull ? null : (
@@ -41,7 +47,7 @@ const MiniPlayer: React.FC<IMiniPlayer> = (props: IMiniPlayer) => {
             <p className={descName}>{current.name}</p>
             <p className={descSinger}>{current.ar.map((_: any) => _.name).join('/')}</p>
           </div>
-          <div className={control} onClick={playingClick}>
+          <div className={control} onClick={playingClickHandler}>
             <ProgressCircle radius={32} percent={percent}>
               <i className={controlBtnClass} />
             </ProgressCircle>

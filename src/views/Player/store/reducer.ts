@@ -31,6 +31,8 @@ export default (state = defaultState, action: IAction) => {
       return state.set('playing', action.data);
     case actionTypes.CHANGE_PLAYER_FULL:
       return state.set('isFull', action.data);
+    case actionTypes.CHANGE_PLAYER_MODE:
+      return state.set('mode', action.data);
     default:
       return state;
   }

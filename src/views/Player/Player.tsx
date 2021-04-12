@@ -13,6 +13,7 @@ interface IPlayer {
   currentIndex: number;
   playing: boolean;
   isFull: boolean;
+  mode: number;
   nextSong: () => void;
   changePlaying: (playing: boolean) => void;
   toggleFull: (toggleFull: boolean) => void;
@@ -26,6 +27,7 @@ const Player: React.FC<IPlayer> = (props: IPlayer) => {
     nextSong,
     playing,
     isFull,
+    mode,
     changePlaying,
     toggleFull,
   } = props;
@@ -96,6 +98,12 @@ const Player: React.FC<IPlayer> = (props: IPlayer) => {
         <NormalPlayer
           isFull={isFull}
           current={currentSong}
+          playing={playing}
+          mode={mode}
+          playingClick={() => {
+            changePlaying(!playing);
+            setPause(true);
+          }}
           percent={percent}
           toggleFull={() => {
             toggleFull(!isFull);
@@ -113,6 +121,7 @@ const mapStateToProps = (state: any) => ({
   currentIndex: state.getIn(['player', 'currentIndex']),
   playing: state.getIn(['player', 'playing']),
   isFull: state.getIn(['player', 'isFull']),
+  mode: state.getIn(['player', 'mode']),
 });
 
 const mapDispatchToProps = (dispatch: any) => ({

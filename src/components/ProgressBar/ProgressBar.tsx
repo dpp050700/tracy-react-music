@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import styled from './ProgressBar.module.css';
 // import { getPlayTimeByPercent } from '../../utils/utils';
 
-const { root, time, line, lineActive, progressBtnWrapper, progressBtn } = styled;
+const { root, time, timeLf, timeRg, line, lineActive, progressBtnWrapper, progressBtn } = styled;
 
 interface IProgressBar {
   percent: number;
@@ -35,14 +35,14 @@ const ProgressBar: React.FC<IProgressBar> = (props: IProgressBar) => {
 
   return (
     <div className={root}>
-      <div className={time}>{playTime}</div>
+      <div className={`${time} ${timeLf}`}>{playTime}</div>
       <div className={line} ref={progressBar}>
         <div className={lineActive} ref={progressActive} />
         <div className={progressBtnWrapper}>
           <div className={progressBtn} ref={progressButton} />
         </div>
       </div>
-      <div className={time}>{totalTime}</div>
+      <div className={`${time} ${timeRg}`}>{totalTime}</div>
     </div>
   );
 };

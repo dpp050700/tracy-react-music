@@ -13,6 +13,12 @@
   color: rgb(46, 48, 48);
   font-size: 12px;
 }
+.timeLf{
+  text-align: left;
+}
+.timeRg{
+  text-align: right;
+}
 .line{
   flex:1;
   position: relative;

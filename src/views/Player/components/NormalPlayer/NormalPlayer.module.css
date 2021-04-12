@@ -75,3 +75,14 @@ div.headerWrapper{
   bottom: 50px;
   width: 100%;
 }
+.playerController {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+.playerController i{
+  font-size: 26px;
+}
