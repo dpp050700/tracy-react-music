@@ -20,254 +20,291 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.music-icon-chat-dot-square:before {
-  content: '\e655';
+.music-icon-user-add:before {
+  content: "\e643";
 }
 
-.music-icon-service:before {
-  content: '\e6d6';
+.music-icon-list:before {
+  content: "\e711";
 }
 
-.music-icon-back:before {
-  content: '\e636';
+.music-icon-prev:before {
+  content: "\e6a5";
 }
 
-.music-icon-arrow-left:before {
-  content: '\e637';
+.music-icon-next:before {
+  content: "\e63d";
 }
 
-.music-icon-arrow-right:before {
-  content: '\e639';
+.music-icon-random:before {
+  content: "\e6e2";
 }
 
-.music-icon-arrow-up:before {
-  content: '\e63a';
+.music-icon-single-loop:before {
+  content: "\e665";
 }
 
-.music-icon-arrow-down:before {
-  content: '\e63c';
-}
-
-.music-icon-bell:before {
-  content: '\e63f';
-}
-
-.music-icon-chat-dot-round:before {
-  content: '\e651';
-}
-
-.music-icon-check:before {
-  content: '\e652';
-}
-
-.music-icon-circle-check:before {
-  content: '\e658';
-}
-
-.music-icon-circle-close:before {
-  content: '\e659';
-}
-
-.music-icon-circle-plus-outline:before {
-  content: '\e65b';
-}
-
-.music-icon-circle-plus:before {
-  content: '\e65c';
-}
-
-.music-icon-close:before {
-  content: '\e65e';
-}
-
-.music-icon-delete:before {
-  content: '\e679';
-}
-
-.music-icon-edit-outline:before {
-  content: '\e686';
-}
-
-.music-icon-error:before {
-  content: '\e68a';
-}
-
-.music-icon-folder-remove:before {
-  content: '\e68c';
-}
-
-.music-icon-folder-add:before {
-  content: '\e68e';
-}
-
-.music-icon-info:before {
-  content: '\e6aa';
-}
-
-.music-icon-loading:before {
-  content: '\e6b5';
-}
-
-.music-icon-menu:before {
-  content: '\e6b7';
-}
-
-.music-icon-remove-outline:before {
-  content: '\e6ea';
-}
-
-.music-icon-remove:before {
-  content: '\e6ec';
-}
-
-.music-icon-refresh-right:before {
-  content: '\e6ed';
-}
-
-.music-icon-success:before {
-  content: '\e6f4';
-}
-
-.music-icon-video-play:before {
-  content: '\e702';
+.music-icon-loop:before {
+  content: "\e71d";
 }
 
 .music-icon-video-pause:before {
-  content: '\e705';
+  content: "\e822";
+}
+
+.music-icon-video-play:before {
+  content: "\e62c";
+}
+
+.music-icon-chat-dot-square:before {
+  content: "\e655";
+}
+
+.music-icon-service:before {
+  content: "\e6d6";
+}
+
+.music-icon-back:before {
+  content: "\e636";
+}
+
+.music-icon-arrow-left:before {
+  content: "\e637";
+}
+
+.music-icon-arrow-right:before {
+  content: "\e639";
+}
+
+.music-icon-arrow-up:before {
+  content: "\e63a";
+}
+
+.music-icon-arrow-down:before {
+  content: "\e63c";
+}
+
+.music-icon-bell:before {
+  content: "\e63f";
+}
+
+.music-icon-chat-dot-round:before {
+  content: "\e651";
+}
+
+.music-icon-check:before {
+  content: "\e652";
+}
+
+.music-icon-circle-check:before {
+  content: "\e658";
+}
+
+.music-icon-circle-close:before {
+  content: "\e659";
+}
+
+.music-icon-circle-plus-outline:before {
+  content: "\e65b";
+}
+
+.music-icon-circle-plus:before {
+  content: "\e65c";
+}
+
+.music-icon-close:before {
+  content: "\e65e";
+}
+
+.music-icon-delete:before {
+  content: "\e679";
+}
+
+.music-icon-edit-outline:before {
+  content: "\e686";
+}
+
+.music-icon-error:before {
+  content: "\e68a";
+}
+
+.music-icon-folder-remove:before {
+  content: "\e68c";
+}
+
+.music-icon-folder-add:before {
+  content: "\e68e";
+}
+
+.music-icon-info:before {
+  content: "\e6aa";
+}
+
+.music-icon-loading:before {
+  content: "\e6b5";
+}
+
+.music-icon-menu:before {
+  content: "\e6b7";
+}
+
+.music-icon-remove-outline:before {
+  content: "\e6ea";
+}
+
+.music-icon-remove:before {
+  content: "\e6ec";
+}
+
+.music-icon-refresh-right:before {
+  content: "\e6ed";
+}
+
+.music-icon-success:before {
+  content: "\e6f4";
+}
+
+.music-icon-video-play-line:before {
+  content: "\e702";
+}
+
+.music-icon-video-pause-line:before {
+  content: "\e705";
 }
 
 .music-icon-warning-outline:before {
-  content: '\e70b';
+  content: "\e70b";
 }
 
 .music-icon-warning:before {
-  content: '\e712';
+  content: "\e712";
 }
 
 .music-icon-plus:before {
-  content: '\e715';
+  content: "\e715";
 }
 
 .music-icon-top:before {
-  content: '\e73d';
+  content: "\e73d";
 }
 
 .music-icon-question:before {
-  content: '\e74d';
+  content: "\e74d";
 }
 
 .music-icon-warning-circle:before {
-  content: '\e630';
+  content: "\e630";
 }
 
 .music-icon-add-circle:before {
-  content: '\e664';
+  content: "\e664";
 }
 
 .music-icon-love-outline:before {
-  content: '\e62b';
+  content: "\e62b";
 }
 
 .music-icon-un-subscribed:before {
-  content: '\e72c';
+  content: "\e72c";
 }
 
 .music-icon-love:before {
-  content: '\e67e';
+  content: "\e67e";
 }
 
 .music-icon-subscribed:before {
-  content: '\e66a';
+  content: "\e66a";
 }
 
 .music-icon-more:before {
-  content: '\e689';
+  content: "\e689";
 }
 
 .music-icon-bulb:before {
-  content: '\e603';
+  content: "\e603";
 }
 
 .music-icon-about:before {
-  content: '\e608';
+  content: "\e608";
 }
 
 .music-icon-order:before {
-  content: '\e64e';
+  content: "\e64e";
 }
 
 .music-icon-message:before {
-  content: '\e62f';
+  content: "\e62f";
 }
 
 .music-icon-bell-2:before {
-  content: '\e70a';
+  content: "\e70a";
 }
 
 .music-icon-cart:before {
-  content: '\e622';
+  content: "\e622";
 }
 
 .music-icon-invoice:before {
-  content: '\e672';
+  content: "\e672";
 }
 
 .music-icon-blacklist:before {
-  content: '\e722';
+  content: "\e722";
 }
 
 .music-icon-ticket:before {
-  content: '\e609';
+  content: "\e609";
 }
 
 .music-icon-setting:before {
-  content: '\e62d';
+  content: "\e62d";
 }
 
 .music-icon-game:before {
-  content: '\e627';
+  content: "\e627";
 }
 
 .music-icon-headset:before {
-  content: '\e60a';
+  content: "\e60a";
 }
 
 .music-icon-broadcast:before {
-  content: '\e6ae';
+  content: "\e6ae";
 }
 
 .music-icon-music:before {
-  content: '\e642';
+  content: "\e642";
 }
 
 .music-icon-edit:before {
-  content: '\e8ad';
+  content: "\e8ad";
 }
 
 .music-icon-calendar:before {
-  content: '\e8b4';
+  content: "\e8b4";
 }
 
 .music-icon-home:before {
-  content: '\e8ba';
+  content: "\e8ba";
 }
 
 .music-icon-refesh:before {
-  content: '\e8bb';
+  content: "\e8bb";
 }
 
 .music-icon-search:before {
-  content: '\e8bc';
+  content: "\e8bc";
 }
 
 .music-icon-follow:before {
-  content: '\e8be';
+  content: "\e8be";
 }
 
 .music-icon-hot:before {
-  content: '\e8c9';
+  content: "\e8c9";
 }
 
 .music-icon-person:before {
-  content: '\e60c';
+  content: "\e60c";
 }
+

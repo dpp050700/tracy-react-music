@@ -37,6 +37,7 @@ const Player: React.FC<IPlayer> = (props: IPlayer) => {
   const percent = Number.isNaN(currentTime / duration) ? 0 : currentTime / duration;
 
   const handleEnd = () => {
+    setPause(false);
     nextSong();
   };
 
@@ -66,6 +67,7 @@ const Player: React.FC<IPlayer> = (props: IPlayer) => {
     }
     console.log(currentIndex, playList);
     if (audioRef && audioRef.current) {
+      setPause(true);
       audioRef.current.src = getSongUrl(currentSong.id);
       changePlaying(true);
       audioRef.current.play();
