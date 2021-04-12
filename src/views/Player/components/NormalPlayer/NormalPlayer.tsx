@@ -17,6 +17,7 @@ const {
 } = styled;
 
 interface INormalPlayer {
+  isFull: boolean;
   current: any;
   percent: number;
   // playing: boolean;
@@ -25,7 +26,7 @@ interface INormalPlayer {
 }
 
 const NormalPlayer: React.FC<INormalPlayer> = (props: INormalPlayer) => {
-  const { current, percent, toggleFull } = props;
+  const { current, percent, isFull, toggleFull } = props;
   const leftIcon = [
     {
       name: 'music-icon-arrow-down',
@@ -41,21 +42,25 @@ const NormalPlayer: React.FC<INormalPlayer> = (props: INormalPlayer) => {
   );
 
   return (
-    <div className={root}>
-      <Header leftIcons={leftIcon} className={headerWrapper} title={title} />
-      <div className={background}>
-        <img src={current.al.picUrl} alt="" />
-      </div>
-      <div className={`${layer} ${background}`} />
-      <div className={content} />
-      <div className={bottom}>
-        <ProgressBar
-          percent={percent}
-          playTime={getPlayTimeByPercent(percent, current.dt)}
-          totalTime={getPlayTimeByPercent(1, current.dt)}
-        />
-      </div>
-    </div>
+    <>
+      {isFull ? (
+        <div className={root}>
+          <Header leftIcons={leftIcon} className={headerWrapper} title={title} />
+          <div className={background}>
+            <img src={current.al.picUrl} alt="" />
+          </div>
+          <div className={`${layer} ${background}`} />
+          <div className={content} />
+          <div className={bottom}>
+            <ProgressBar
+              percent={percent}
+              playTime={getPlayTimeByPercent(percent, current.dt)}
+              totalTime={getPlayTimeByPercent(1, current.dt)}
+            />
+          </div>
+        </div>
+      ) : null}
+    </>
   );
 };
 

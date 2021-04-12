@@ -32,7 +32,6 @@ export const shuffle = list => {
 };
 
 export const getPlayTimeByPercent = (percent, total = 0) => {
-  console.log(total, percent);
   const time = (percent * total) / 1000;
   const minute = Math.floor(time / 60);
   const second = (time % 60).toFixed().toString().padStart(2, '0');

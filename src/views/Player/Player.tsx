@@ -77,6 +77,7 @@ const Player: React.FC<IPlayer> = (props: IPlayer) => {
     <>
       {playList.length && !isFull ? (
         <MiniPlayer
+          isFull={isFull}
           current={currentSong}
           percent={percent}
           playing={playing}
@@ -91,6 +92,7 @@ const Player: React.FC<IPlayer> = (props: IPlayer) => {
       ) : null}
       {playList.length && isFull ? (
         <NormalPlayer
+          isFull={isFull}
           current={currentSong}
           percent={percent}
           toggleFull={() => {
